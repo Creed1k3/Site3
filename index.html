@@ -1,1534 +1,2039 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="es">
+
 <head>
     <meta charset="utf-8">
-    <meta content="initial-scale=1, maximum-scale=1, width=device-width" name="viewport">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
     <title>BETTER ME — Quema la grasa masculina</title>
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <script src="js/jquery-1.12.4.min.js"></script>
-    <style>
-/* ================================================================
-   BETTER ME — FULL REDESIGN 2025
-   Dark / Industrial / Masculine
-   ================================================================ */
-
-:root {
-  --green:   #3ecf6e;
-  --green2:  #28a855;
-  --red:     #e63030;
-  --dark:    #0d0f0e;
-  --dark2:   #131715;
-  --dark3:   #1a1f1c;
-  --panel:   #1e2421;
-  --border:  rgba(62,207,110,0.18);
-  --text:    #e8ede9;
-  --muted:   #7a8c80;
-  --font-display: 'Bebas Neue', sans-serif;
-  --font-body: 'Barlow', sans-serif;
-  --font-cond: 'Barlow Condensed', sans-serif;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--font-body);
-  background: var(--dark);
-  color: var(--text);
-  font-size: 17px;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-img { max-width: 100%; display: block; }
-ul { list-style: none; }
-a { text-decoration: none; }
-
-.wrapper {
-  max-width: 1060px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-/* ── NOISE OVERLAY ─────────────────────────────── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.4;
-}
-
-/* ── DIAGONAL STRIPE ACCENT ─────────────────────── */
-.stripe-accent {
-  width: 100%;
-  height: 6px;
-  background: repeating-linear-gradient(
-    -45deg,
-    var(--green) 0px,
-    var(--green) 8px,
-    transparent 8px,
-    transparent 18px
-  );
-}
-
-/* ── HERO ──────────────────────────────────────── */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  background: var(--dark2);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-}
-
-.hero-bg-circle {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-}
-.hero-bg-circle--1 {
-  width: 700px; height: 700px;
-  top: -200px; right: -180px;
-  background: radial-gradient(circle, rgba(62,207,110,0.09) 0%, transparent 65%);
-}
-.hero-bg-circle--2 {
-  width: 400px; height: 400px;
-  bottom: -100px; left: -100px;
-  background: radial-gradient(circle, rgba(62,207,110,0.06) 0%, transparent 65%);
-}
-
-.hero-grid-lines {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(62,207,110,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(62,207,110,0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-.hero .wrapper {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 40px;
-  align-items: center;
-  padding-top: 60px;
-  padding-bottom: 60px;
-}
-
-.hero-tag {
-  display: inline-block;
-  background: var(--green);
-  color: var(--dark);
-  font-family: var(--font-cond);
-  font-weight: 900;
-  font-size: 12px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  padding: 5px 14px;
-  border-radius: 2px;
-  margin-bottom: 22px;
-}
-
-.hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(72px, 9vw, 110px);
-  line-height: 0.9;
-  letter-spacing: 2px;
-  color: #fff;
-  margin-bottom: 8px;
-}
-.hero-title span {
-  color: var(--green);
-  display: block;
-}
-
-.hero-subtitle {
-  font-family: var(--font-cond);
-  font-weight: 700;
-  font-size: 22px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  margin-bottom: 32px;
-}
-
-.hero-bullets {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-bottom: 40px;
-}
-.hero-bullet {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  font-size: 16px;
-  color: #c5d4c9;
-}
-.hero-bullet-icon {
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  border: 2px solid var(--green);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.hero-bullet-icon img {
-  width: 18px; height: 18px; object-fit: contain;
-}
-.hero-bullet strong { color: #fff; }
-
-.hero-price-box {
-  background: rgba(62,207,110,0.07);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-.price-old {
-  font-size: 15px;
-  color: var(--muted);
-  text-decoration: line-through;
-}
-.price-new {
-  font-family: var(--font-display);
-  font-size: 48px;
-  color: var(--green);
-  line-height: 1;
-}
-.price-new sup { font-size: 22px; vertical-align: super; }
-.price-badge {
-  background: var(--red);
-  color: #fff;
-  font-family: var(--font-cond);
-  font-weight: 900;
-  font-size: 13px;
-  padding: 4px 10px;
-  border-radius: 4px;
-  letter-spacing: 1px;
-}
-
-.btn-hero {
-  display: block;
-  width: 100%;
-  background: var(--green);
-  color: var(--dark);
-  font-family: var(--font-cond);
-  font-weight: 900;
-  font-size: 22px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 20px 32px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 0 40px rgba(62,207,110,0.3);
-}
-.btn-hero::after {
-  content: '';
-  position: absolute;
-  top: -50%; left: -75%;
-  width: 50%; height: 200%;
-  background: rgba(255,255,255,0.2);
-  transform: skewX(-20deg);
-  transition: left 0.4s;
-}
-.btn-hero:hover { transform: translateY(-2px); box-shadow: 0 0 60px rgba(62,207,110,0.5); }
-.btn-hero:hover::after { left: 125%; }
-
-.hero-img-wrap {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-.hero-img-wrap::before {
-  content: '';
-  position: absolute;
-  bottom: -20px;
-  width: 280px; height: 280px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(62,207,110,0.2) 0%, transparent 70%);
-}
-.hero-prod-img {
-  position: relative;
-  z-index: 1;
-  max-height: 480px;
-  filter: drop-shadow(0 20px 60px rgba(62,207,110,0.25));
-  animation: float 4s ease-in-out infinite;
-}
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-16px); }
-}
-
-/* ── STATS BAR ─────────────────────────────────── */
-.stats-bar {
-  background: var(--green);
-  padding: 0;
-}
-.stats-bar .wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-.stat-item {
-  padding: 24px 20px;
-  text-align: center;
-  border-right: 1px solid rgba(0,0,0,0.12);
-  color: var(--dark);
-}
-.stat-item:last-child { border-right: none; }
-.stat-num {
-  font-family: var(--font-display);
-  font-size: 48px;
-  line-height: 1;
-  color: var(--dark);
-}
-.stat-label {
-  font-family: var(--font-cond);
-  font-weight: 700;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: rgba(13,15,14,0.65);
-}
-
-/* ── SECTION HEADINGS ──────────────────────────── */
-.sec-head {
-  text-align: center;
-  margin-bottom: 56px;
-}
-.sec-eyebrow {
-  font-family: var(--font-cond);
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--green);
-  margin-bottom: 12px;
-}
-.sec-title {
-  font-family: var(--font-display);
-  font-size: clamp(38px, 5vw, 58px);
-  color: #fff;
-  line-height: 1;
-  letter-spacing: 1px;
-}
-.sec-title em {
-  color: var(--green);
-  font-style: normal;
-}
-.sec-sub {
-  margin-top: 14px;
-  font-size: 16px;
-  color: var(--muted);
-  max-width: 560px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* ── PROBLEM SECTION ───────────────────────────── */
-.section-problem {
-  padding: 100px 0;
-  background: var(--dark3);
-  position: relative;
-}
-.section-problem::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--green), transparent);
-}
-
-.problem-layout {
-  display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 60px;
-  align-items: center;
-}
-.problem-text h3 {
-  font-family: var(--font-display);
-  font-size: 42px;
-  color: #fff;
-  line-height: 1.1;
-  margin-bottom: 20px;
-}
-.problem-text h3 span { color: var(--red); }
-.problem-text p {
-  font-size: 16px;
-  color: #a0b0a6;
-  line-height: 1.7;
-  margin-bottom: 16px;
-}
-.problem-alert {
-  margin-top: 30px;
-  background: rgba(230,48,48,0.08);
-  border-left: 4px solid var(--red);
-  border-radius: 0 8px 8px 0;
-  padding: 16px 20px;
-  font-family: var(--font-cond);
-  font-weight: 700;
-  font-size: 18px;
-  color: #fff;
-}
-.problem-alert span { color: var(--red); }
-
-.problem-img {
-  position: relative;
-  text-align: center;
-}
-.problem-img img {
-  max-height: 400px;
-  margin: 0 auto;
-  filter: grayscale(20%);
-}
-.problem-img-label {
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--red);
-  color: #fff;
-  font-family: var(--font-cond);
-  font-weight: 900;
-  font-size: 13px;
-  letter-spacing: 2px;
-  padding: 6px 20px;
-  border-radius: 4px;
-  white-space: nowrap;
-}
-
-/* ── WHY METHODS FAIL ──────────────────────────── */
-.section-fail {
-  padding: 100px 0;
-  background: var(--dark2);
-}
-
-.fail-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 48px;
-}
-.fail-card {
-  background: var(--panel);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 12px;
-  padding: 28px 20px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.fail-card::before {
-  content: '✗';
-  position: absolute;
-  top: 8px; right: 12px;
-  font-size: 18px;
-  color: var(--red);
-  font-weight: 900;
-}
-.fail-card-title {
-  font-family: var(--font-cond);
-  font-weight: 900;
-  font-size: 18px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--muted);
-  margin-top: 8px;
-}
-
-.fail-conclusion {
-  background: linear-gradient(135deg, rgba(230,48,48,0.1), rgba(230,48,48,0.05));
-  border: 1px solid rgba(230,48,48,0.2);
-  border-radius: 12px;
-  padding: 28px 36px;
-  text-align: center;
-}
-.fail-conclusion p {
-  font-family: var(--font-cond);
-  font-weight: 700;
-  font-size: 22px;
-  color: #fff;
-}
-.fail-conclusion p span { color: var(--red); }
-
-/* ── DANGERS ───────────────────────────────────── */
-.section-dangers {
-  padding: 100px 0;
-  background: var(--dark3);
-  position: relative;
-}
-.section-dangers::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(62,207,110,0.3), transparent);
-}
-
-.dangers-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.danger-card {
-  background: var(--panel);
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.05);
-  padding: 28px 24px;
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  transition: border-color 0.2s, transform 0.2s;
-}
-.danger-card:hover {
-  border-color: rgba(230,48,48,0.3);
-  transform: translateY(-3px);
-}
-.danger-icon {
-  width: 44px; height: 44px;
-  flex-shrink: 0;
-}
-.danger-icon img { width: 100%; }
-.danger-text {
-  font-size: 15px;
-  color: #a0b0a6;
-  line-height: 1.5;
-}
-
-/* ── SOLUTION / WHY BETTER ME ──────────────────── */
-.section-solution {
-  padding: 100px 0;
-  background: var(--dark2);
-  position: relative;
-  overflow: hidden;
-}
-.solution-glow {
-  position: absolute;
-  top: -200px; left: 50%;
-  transform: translateX(-50%);
-  width: 800px; height: 600px;
-  background: radial-gradient(ellipse, rgba(62,207,110,0.07) 0%, transparent 65%);
-  pointer-events: none;
-}
-
-.solution-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-.solution-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 32px 28px;
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  transition: box-shadow 0.25s, transform 0.25s;
-}
-.solution-card:hover {
-  box-shadow: 0 8px 40px rgba(62,207,110,0.12);
-  transform: translateY(-4px);
-}
-.solution-icon {
-  width: 56px; height: 56px;
-  background: rgba(62,207,110,0.1);
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.solution-icon img { width: 32px; height: 32px; object-fit: contain; }
-.solution-card-title {
-  font-family: var(--font-cond);
-  font-weight: 900;
-  font-size: 19px;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 8px;
-}
-.solution-card-text { font-size: 15px; color: #8a9e91; line-height: 1.6; }
-
-/* ── BENEFITS BAR ──────────────────────────────── */
-.section-benefits {
-  padding: 90px 0;
-  background: var(--dark3);
-}
-.benefits-list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 56px;
-}
-.benefit-item {
-  text-align: center;
-  padding: 28px 16px;
-  background: var(--panel);
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.04);
-}
-.benefit-item img { width: 36px; margin: 0 auto 14px; }
-.benefit-item span {
-  font-size: 14px;
-  color: #8a9e91;
-  line-height: 1.4;
-}
-.benefit-item strong { color: #d8eed9; display: block; font-size: 15px; }
-
-/* ── EXPERT QUOTE ──────────────────────────────── */
-.section-expert {
-  padding: 90px 0;
-  background: var(--dark2);
-}
-.expert-box {
-  max-width: 800px;
-  margin: 0 auto;
-  background: var(--panel);
-  border-radius: 20px;
-  border: 1px solid var(--border);
-  padding: 48px 56px;
-  position: relative;
-  overflow: hidden;
-}
-.expert-box::before {
-  content: '"';
-  position: absolute;
-  top: -20px; left: 24px;
-  font-family: var(--font-display);
-  font-size: 200px;
-  color: rgba(62,207,110,0.06);
-  line-height: 1;
-  pointer-events: none;
-}
-.expert-text {
-  font-size: 18px;
-  color: #c5d4c9;
-  line-height: 1.7;
-  margin-bottom: 30px;
-  position: relative;
-  z-index: 1;
-}
-.expert-text strong { color: #fff; }
-.expert-footer {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.expert-recom {
-  background: var(--green);
-  color: var(--dark);
-  font-family: var(--font-cond);
-  font-weight: 900;
-  font-size: 13px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 8px 18px;
-  border-radius: 6px;
-}
-.expert-sign img { max-height: 50px; }
-
-/* ── REVIEWS ───────────────────────────────────── */
-.section-reviews {
-  padding: 100px 0;
-  background: var(--dark3);
-}
-
-.reviews-summary-bar {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 32px 40px;
-  margin-bottom: 48px;
-  max-width: 680px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.rs-score {
-  font-family: var(--font-display);
-  font-size: 80px;
-  color: var(--green);
-  line-height: 1;
-  flex-shrink: 0;
-}
-.rs-right { flex: 1; }
-.rs-stars {
-  font-size: 28px;
-  color: #f5a623;
-  letter-spacing: 4px;
-  margin-bottom: 4px;
-}
-.rs-count { font-size: 14px; color: var(--muted); margin-bottom: 14px; }
-.rs-count strong { color: var(--text); }
-.rs-bars { display: flex; flex-direction: column; gap: 7px; }
-.rs-bar-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: var(--muted);
-}
-.rs-bar-row > span:first-child { width: 24px; text-align: right; flex-shrink: 0; }
-.rs-bar-row > span:last-child { width: 30px; flex-shrink: 0; }
-.rs-track {
-  flex: 1; height: 6px;
-  background: rgba(255,255,255,0.07);
-  border-radius: 3px; overflow: hidden;
-}
-.rs-fill { height: 100%; background: var(--green); border-radius: 3px; }
-.rs-fill--low { background: #444; }
-
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-.review-card {
-  background: var(--panel);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 16px;
-  padding: 24px 26px 20px;
-  transition: border-color 0.2s, transform 0.2s;
-}
-.review-card:hover {
-  border-color: rgba(62,207,110,0.2);
-  transform: translateY(-3px);
-}
-.rc-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
-}
-.rc-ava {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 800; font-size: 14px;
-  color: #fff; flex-shrink: 0;
-}
-.rc-ava--1 { background: linear-gradient(135deg,#1b5e20,#43a047); }
-.rc-ava--2 { background: linear-gradient(135deg,#0d47a1,#1976d2); }
-.rc-ava--3 { background: linear-gradient(135deg,#4a148c,#7b1fa2); }
-.rc-ava--4 { background: linear-gradient(135deg,#bf360c,#f4511e); }
-.rc-ava--5 { background: linear-gradient(135deg,#004d40,#00897b); }
-.rc-ava--6 { background: linear-gradient(135deg,#880e4f,#c2185b); }
-.rc-ava--7 { background: linear-gradient(135deg,#263238,#546e7a); }
-.rc-ava--8 { background: linear-gradient(135deg,#33691e,#7cb342); }
-.rc-meta { flex: 1; }
-.rc-name {
-  font-weight: 700;
-  font-size: 15px;
-  color: #dde8df;
-  display: block;
-}
-.rc-loc { font-size: 12px; color: var(--muted); }
-.rc-verified {
-  font-size: 11px; color: var(--green);
-  background: rgba(62,207,110,0.1);
-  border-radius: 20px; padding: 3px 10px;
-  font-weight: 600; white-space: nowrap;
-}
-.rc-stars { color: #f5a623; font-size: 16px; letter-spacing: 2px; margin-bottom: 8px; }
-.rc-result {
-  display: inline-block;
-  background: linear-gradient(90deg, var(--green2), var(--green));
-  color: var(--dark);
-  font-family: var(--font-cond);
-  font-weight: 900;
-  font-size: 13px;
-  border-radius: 5px;
-  padding: 3px 12px;
-  margin-bottom: 12px;
-  letter-spacing: 0.5px;
-}
-.rc-text { font-size: 14px; color: #8a9e91; line-height: 1.65; margin-bottom: 10px; }
-.rc-date { font-size: 12px; color: rgba(255,255,255,0.2); }
-
-/* ── ORDER FORM ────────────────────────────────── */
-.section-order {
-  padding: 100px 0;
-  background: var(--dark2);
-  position: relative;
-  overflow: hidden;
-}
-.order-glow {
-  position: absolute;
-  bottom: -200px; right: -200px;
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(62,207,110,0.08) 0%, transparent 65%);
-  pointer-events: none;
-}
-
-.order-layout {
-  display: grid;
-  grid-template-columns: 1fr 440px;
-  gap: 60px;
-  align-items: center;
-}
-.order-left h2 {
-  font-family: var(--font-display);
-  font-size: clamp(44px, 5vw, 64px);
-  color: #fff;
-  line-height: 0.95;
-  margin-bottom: 24px;
-}
-.order-left h2 span { color: var(--green); display: block; }
-.order-left p { font-size: 16px; color: var(--muted); margin-bottom: 28px; line-height: 1.7; }
-
-.order-price-row {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  margin-bottom: 30px;
-}
-.order-price-old { font-size: 17px; color: var(--muted); text-decoration: line-through; }
-.order-price-new {
-  font-family: var(--font-display);
-  font-size: 56px;
-  color: var(--green);
-  line-height: 1;
-}
-.order-price-badge {
-  background: var(--red);
-  color: #fff;
-  font-family: var(--font-cond);
-  font-weight: 900;
-  font-size: 14px;
-  padding: 5px 12px;
-  border-radius: 5px;
-  letter-spacing: 1px;
-}
-
-.order-prod-img {
-  max-height: 220px;
-  margin-bottom: 10px;
-  filter: drop-shadow(0 10px 40px rgba(62,207,110,0.2));
-}
-
-.order-form {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 40px 36px;
-}
-.order-form h3 {
-  font-family: var(--font-display);
-  font-size: 30px;
-  color: #fff;
-  margin-bottom: 8px;
-  letter-spacing: 1px;
-}
-.order-form p {
-  font-size: 14px;
-  color: var(--muted);
-  margin-bottom: 28px;
-}
-.form-field {
-  margin-bottom: 16px;
-}
-.form-label {
-  display: block;
-  font-family: var(--font-cond);
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
-.form-input {
-  width: 100%;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 8px;
-  color: #fff;
-  font-family: var(--font-body);
-  font-size: 16px;
-  padding: 14px 18px;
-  transition: border-color 0.2s, background 0.2s;
-  outline: none;
-}
-.form-input::placeholder { color: rgba(255,255,255,0.25); }
-.form-input:focus {
-  border-color: var(--green);
-  background: rgba(62,207,110,0.05);
-}
-.phone_error {
-  color: var(--red) !important;
-  font-size: 12px;
-  margin-top: 5px;
-}
-.btn-order {
-  display: block;
-  width: 100%;
-  background: var(--green);
-  color: var(--dark);
-  font-family: var(--font-cond);
-  font-weight: 900;
-  font-size: 20px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  padding: 18px 24px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-  margin-top: 8px;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 0 30px rgba(62,207,110,0.25);
-}
-.btn-order:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(62,207,110,0.45); }
-.form-note {
-  font-size: 12px;
-  color: rgba(255,255,255,0.2);
-  text-align: center;
-  margin-top: 16px;
-  line-height: 1.5;
-}
-
-/* ── FOOTER ────────────────────────────────────── */
-.footer {
-  background: #080a09;
-  padding: 28px 0;
-  text-align: center;
-  font-size: 13px;
-  color: rgba(255,255,255,0.2);
-  border-top: 1px solid rgba(255,255,255,0.05);
-}
-.footer a { color: rgba(255,255,255,0.35); transition: color 0.2s; }
-.footer a:hover { color: var(--green); }
-
-/* ── FADE IN ANIMATIONS ──────────────────────────── */
-.fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ── RESPONSIVE ─────────────────────────────────── */
-@media (max-width: 900px) {
-  .hero .wrapper {
-    grid-template-columns: 1fr;
-    text-align: center;
-    padding-top: 80px;
-  }
-  .hero-img-wrap { order: -1; }
-  .hero-prod-img { max-height: 300px; }
-  .hero-bullet { justify-content: center; }
-  .hero-price-box { justify-content: center; }
-
-  .stats-bar .wrapper { grid-template-columns: repeat(3,1fr); }
-
-  .problem-layout { grid-template-columns: 1fr; }
-  .problem-img { display: none; }
-
-  .fail-grid { grid-template-columns: repeat(2,1fr); }
-
-  .dangers-grid { grid-template-columns: 1fr 1fr; }
-
-  .solution-grid { grid-template-columns: 1fr; }
-
-  .benefits-list { grid-template-columns: repeat(2,1fr); }
-
-  .reviews-summary-bar {
-    flex-direction: column;
-    text-align: center;
-    padding: 24px 20px;
-    gap: 20px;
-  }
-  .rs-bar-row > span:first-child { width: 20px; }
-
-  .reviews-grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
-
-  .order-layout { grid-template-columns: 1fr; }
-  .order-form { padding: 28px 20px; }
-
-  .expert-box { padding: 32px 24px; }
-}
-
-@media (max-width: 520px) {
-  .fail-grid { grid-template-columns: 1fr 1fr; }
-  .dangers-grid { grid-template-columns: 1fr; }
-  .stats-bar .wrapper { grid-template-columns: 1fr; }
-  .stat-item { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.1); }
-}
-    </style>
 </head>
+
 <body>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const pxValue = '{px}';
-    if (!pxValue) return;
-    const date = new Date();
-    date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000));
-    document.cookie = 'px=' + pxValue + ';expires=' + date.toUTCString() + ';path=/';
-});
-</script>
+    <!--
+================================================================
+  ЧТО МЕНЯТЬ ПРИ СМЕНЕ ОФФЕРА (поиск по Ctrl+H):
 
-<!-- ═══════════════════════════════════
-     HERO
-═══════════════════════════════════ -->
-<section class="hero">
-  <div class="hero-bg-circle hero-bg-circle--1"></div>
-  <div class="hero-bg-circle hero-bg-circle--2"></div>
-  <div class="hero-grid-lines"></div>
+  img/prod.png      → картинка продукта (банка/бутылка, PNG без фона)
+  img/hero_man.png  → фото мужика на фоне героя
+  BETTER ME         → название продукта
+  3.980 DOP         → старая цена
+  1.990 DOP         → новая цена
+  −50% HOY          → бейдж скидки
+  lemon.php         → action формы
+  {subid} / {sub2}  → трекинг-параметры Кейтаро
+================================================================
+-->
 
-  <div class="wrapper">
-    <div class="hero-content">
-      <div class="hero-tag">&#128293; Exclusivo para hombres</div>
-      <h1 class="hero-title">BETTER<span>ME</span></h1>
-      <p class="hero-subtitle">P&#233;rdida de grasa masculina</p>
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="hero" id="top">
 
-      <ul class="hero-bullets">
-        <li class="hero-bullet">
-          <div class="hero-bullet-icon"><img src="img/li_1_1.png" alt=""></div>
-          <div><strong>Elimina las toxinas</strong> del cuerpo — desde el primer d&#237;a</div>
-        </li>
-        <li class="hero-bullet">
-          <div class="hero-bullet-icon"><img src="img/li_1_2.png" alt=""></div>
-          <div><strong>Acelera el metabolismo</strong> — quema grasa 3&ndash;4x m&#225;s r&#225;pido</div>
-        </li>
-        <li class="hero-bullet">
-          <div class="hero-bullet-icon"><img src="img/li_1_3.png" alt=""></div>
-          <div><strong>M&#225;s energ&#237;a y rendimiento</strong> — normaliza el colesterol</div>
-        </li>
-      </ul>
-
-      <div class="hero-price-box">
-        <div>
-          <div class="price-old">Precio anterior: 3.980 DOP</div>
-          <div class="price-new">1.990 <sup>DOP</sup></div>
+        <div class="hero-man-wrap">
+            <img class="hero-man" src="img/hero_man.png" alt="">
+            <div class="hero-man-fade"></div>
         </div>
-        <div class="price-badge">&#8722;50% HOY</div>
-      </div>
+        <div class="hero-grid"></div>
+        <div class="hero-glow"></div>
 
-      <a class="btn-hero pre_toform" href="#">&#128293; Pedir ahora</a>
-    </div>
+        <div class="wrapper hero-inner">
 
-    <div class="hero-img-wrap">
-      <img class="hero-prod-img" src="img/prod.png" alt="BETTER ME producto">
-    </div>
-  </div>
-</section>
+            <div class="hero-content">
+                <div class="hero-tag">🔥 Exclusivo para hombres</div>
+                <h1 class="hero-title">BETTER<span>ME</span></h1>
+                <p class="hero-sub">Pérdida de grasa masculina</p>
 
-<!-- ═══════════════════════════════════
-     STATS BAR
-═══════════════════════════════════ -->
-<div class="stats-bar">
-  <div class="wrapper">
-    <div class="stat-item">
-      <div class="stat-num">2.8K+</div>
-      <div class="stat-label">Hombres satisfechos</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">4.9★</div>
-      <div class="stat-label">Valoraci&#243;n media</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">&#8722;20kg</div>
-      <div class="stat-label">M&#225;ximo resultado</div>
-    </div>
-  </div>
-</div>
+                <ul class="hero-bullets">
+                    <li class="hero-bullet"><span class="bullet-dot"></span><span><strong>Elimina las toxinas</strong> del cuerpo — desde el primer día</span></li>
+                    <li class="hero-bullet"><span class="bullet-dot"></span><span><strong>Acelera el metabolismo</strong> — quema grasa 3–4× más rápido</span></li>
+                    <li class="hero-bullet"><span class="bullet-dot"></span><span><strong>Más energía y rendimiento</strong> — normaliza el colesterol</span></li>
+                </ul>
 
-<!-- ═══════════════════════════════════
-     PROBLEM
-═══════════════════════════════════ -->
-<section class="section-problem">
-  <div class="wrapper">
-    <div class="sec-head fade-up">
-      <div class="sec-eyebrow">El problema real</div>
-      <h2 class="sec-title">&#191;Por qu&#233; los hombres<br>acumulan <em>m&#225;s grasa</em>?</h2>
-    </div>
+                <div class="hero-price">
+                    <div class="price-col">
+                        <span class="price-old">3.980 DOP</span>
+                        <span class="price-new">1.990 <sup>DOP</sup></span>
+                    </div>
+                    <span class="price-badge">−50% HOY</span>
+                </div>
 
-    <div class="problem-layout">
-      <div class="problem-text fade-up">
-        <h3>La grasa <span>visceral masculina</span> — el enemigo oculto</h3>
-        <p>La grasa visceral o "masculina" es aquella que se acumula alrededor de los &#243;rganos vitales — el t&#243;rax, el abdomen y la pelvis. Solo los hombres acumulan este tipo de grasa, que representa un peligro serio para la salud.</p>
-        <p>Lo m&#225;s peligroso: <strong>tener un peso normal no garantiza la ausencia de grasa visceral</strong>. Puede estar ah&#237; aunque no te notes "gordo".</p>
-        <div class="problem-alert">
-          &#9888; Est&#225; demostrado que el <span>98% de los hombres</span> tiene grasa visceral en exceso.
+                <a class="btn-cta pre_toform" href="#order">🔥 Pedir ahora</a>
+            </div>
+
+            <div class="hero-bottle-wrap">
+                <div class="bottle-glow"></div>
+                <img class="hero-bottle" src="img/prod.png" alt="BETTER ME">
+            </div>
+
         </div>
-      </div>
-      <div class="problem-img fade-up">
-        <img src="img/fat_mike.png" alt="Grasa visceral masculina">
-        <div class="problem-img-label">&#9888; Peligro real</div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ═══════════════════════════════════
-     WHY METHODS FAIL
-═══════════════════════════════════ -->
-<section class="section-fail">
-  <div class="wrapper">
-    <div class="sec-head fade-up">
-      <div class="sec-eyebrow">La verdad incómoda</div>
-      <h2 class="sec-title">Esta grasa <em>NO SE ELIMINA</em><br>con m&#233;todos comunes</h2>
-    </div>
-
-    <div class="fail-grid fade-up">
-      <div class="fail-card">
-        <div class="fail-card-title">Dietas</div>
-      </div>
-      <div class="fail-card">
-        <div class="fail-card-title">Control<br>cal&#243;rico</div>
-      </div>
-      <div class="fail-card">
-        <div class="fail-card-title">Entrena&shy;mientos</div>
-      </div>
-      <div class="fail-card">
-        <div class="fail-card-title">Pastillas<br>populares</div>
-      </div>
-    </div>
-
-    <div class="fail-conclusion fade-up">
-      <p>Estos m&#233;todos solo queman grasa subcut&#225;nea — son efectivos para mujeres, pero <span>para los hombres son in&#250;tiles</span> contra la grasa visceral.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     DANGERS
-═══════════════════════════════════ -->
-<section class="section-dangers">
-  <div class="wrapper">
-    <div class="sec-head fade-up">
-      <div class="sec-eyebrow">Consecuencias</div>
-      <h2 class="sec-title">&#191;Qu&#233; pasa si<br><em>no act&#250;as</em> ahora?</h2>
-    </div>
-
-    <div class="dangers-grid">
-      <div class="danger-card fade-up">
-        <div class="danger-icon"><img src="img/li_3_1.png" alt=""></div>
-        <div class="danger-text"><strong style="color:#e8ede9">Sistema cardiovascular</strong><br>Trastornos del coraz&#243;n y los vasos sangu&#237;neos</div>
-      </div>
-      <div class="danger-card fade-up">
-        <div class="danger-icon"><img src="img/li_3_2.png" alt=""></div>
-        <div class="danger-text"><strong style="color:#e8ede9">Tumores</strong><br>Crecimientos anormales relacionados con grasa visceral</div>
-      </div>
-      <div class="danger-card fade-up">
-        <div class="danger-icon"><img src="img/li_3_3.png" alt=""></div>
-        <div class="danger-text"><strong style="color:#e8ede9">Problemas hormonales</strong><br>Opresi&#243;n de la funci&#243;n sexual y testosterona</div>
-      </div>
-      <div class="danger-card fade-up">
-        <div class="danger-icon"><img src="img/li_3_4.png" alt=""></div>
-        <div class="danger-text"><strong style="color:#e8ede9">Diabetes tipo II</strong><br>Resistencia a la insulina causada por grasa interna</div>
-      </div>
-      <div class="danger-card fade-up">
-        <div class="danger-icon"><img src="img/li_3_5.png" alt=""></div>
-        <div class="danger-text"><strong style="color:#e8ede9">Salud mental</strong><br>Depresi&#243;n, baja autoestima, insatisfacci&#243;n personal</div>
-      </div>
-      <div class="danger-card fade-up">
-        <div class="danger-icon"><img src="img/li_3_6.png" alt=""></div>
-        <div class="danger-text"><strong style="color:#e8ede9">Enfermedades respiratorias</strong><br>Compresi&#243;n de pulmones y diafragma</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     SOLUTION — WHY BETTER ME
-═══════════════════════════════════ -->
-<section class="section-solution">
-  <div class="solution-glow"></div>
-  <div class="wrapper">
-    <div class="sec-head fade-up">
-      <div class="sec-eyebrow">La soluci&#243;n</div>
-      <h2 class="sec-title">Por qu&#233; <em>BETTER ME</em><br>funciona donde otros fallan</h2>
-    </div>
-
-    <div class="solution-grid">
-      <div class="solution-card fade-up">
-        <div class="solution-icon"><img src="img/li_4_1.png" alt=""></div>
-        <div>
-          <div class="solution-card-title">Destrucci&#243;n celular directa</div>
-          <div class="solution-card-text">Penetra en las c&#233;lulas grasas viscerales y las destruye desde el interior — algo imposible con m&#233;todos convencionales.</div>
+    <!-- ═══════════════ STATS ═══════════════ -->
+    <div class="stats-bar">
+        <div class="wrapper stats-inner">
+            <div class="stat"><span class="stat-num">2.8K+</span><span class="stat-lbl">Hombres satisfechos</span></div>
+            <div class="stat"><span class="stat-num">4.9★</span><span class="stat-lbl">Valoración media</span></div>
+            <div class="stat"><span class="stat-num">−20kg</span><span class="stat-lbl">Máximo resultado</span></div>
         </div>
-      </div>
-      <div class="solution-card fade-up">
-        <div class="solution-icon"><img src="img/li_4_2.png" alt=""></div>
-        <div>
-          <div class="solution-card-title">Cuerpo bien formado</div>
-          <div class="solution-card-text">M&#250;sculos definidos. Desaparece la "barriga cervecera" y aparecen los abdominales — sin perder masa muscular.</div>
-        </div>
-      </div>
-      <div class="solution-card fade-up">
-        <div class="solution-icon"><img src="img/li_4_3.png" alt=""></div>
-        <div>
-          <div class="solution-card-title">Mejora del tono muscular</div>
-          <div class="solution-card-text">Mejor absorci&#243;n de prote&#237;nas. Efecto positivo en los m&#250;sculos y prevenci&#243;n de la flacidez post-p&#233;rdida.</div>
-        </div>
-      </div>
-      <div class="solution-card fade-up">
-        <div class="solution-icon"><img src="img/li_4_4.png" alt=""></div>
-        <div>
-          <div class="solution-card-title">84% m&#225;s eficiencia en gym</div>
-          <div class="solution-card-text">Aceleraci&#243;n de ganancia muscular. Los entrenamientos de fuerza son un 84% m&#225;s efectivos con BETTER ME.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     BENEFITS
-═══════════════════════════════════ -->
-<section class="section-benefits">
-  <div class="wrapper">
-    <div class="sec-head fade-up">
-      <div class="sec-eyebrow">4 razones</div>
-      <h2 class="sec-title">Por qu&#233; elegir<br><em>BETTER ME</em></h2>
     </div>
 
-    <div class="benefits-list">
-      <div class="benefit-item fade-up">
-        <img src="img/li_5_1.png" alt="">
-        <strong>100% seguro</strong>
-        <span>Sin efectos secundarios. F&#243;rmula probada cl&#237;nicamente</span>
-      </div>
-      <div class="benefit-item fade-up">
-        <img src="img/li_5_2.png" alt="">
-        <strong>Exclusivo</strong>
-        <span>No se vende en tiendas. Solo disponible aqu&#237;</span>
-      </div>
-      <div class="benefit-item fade-up">
-        <img src="img/li_5_3.png" alt="">
-        <strong>Millones satisfechos</strong>
-        <span>Eficacia comprobada en todo el mundo</span>
-      </div>
-      <div class="benefit-item fade-up">
-        <img src="img/li_5_4.png" alt="">
-        <strong>Recomendado</strong>
-        <span>Por destacados nutricionistas europeos</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     EXPERT
-═══════════════════════════════════ -->
-<section class="section-expert">
-  <div class="wrapper">
-    <div class="sec-head fade-up">
-      <div class="sec-eyebrow">Opini&#243;n experta</div>
-      <h2 class="sec-title">Lo que dice<br><em>la ciencia</em></h2>
-    </div>
-    <div class="expert-box fade-up">
-      <p class="expert-text">Los hombres no son conscientes de los peligros ocultos de la grasa visceral. El hecho es que la grasa "se asienta" en las paredes de los vasos sangu&#237;neos y &#243;rganos internos, causando una enfermedad que es mucho m&#225;s f&#225;cil de prevenir que curar.<br><br>Para eliminar el exceso de grasa del cuerpo, <strong>recomiendo usar BETTER ME, desarrollado espec&#237;ficamente para el metabolismo masculino.</strong></p>
-      <div class="expert-footer">
-        <div class="expert-recom">&#10003; Recomendado</div>
-        <div class="expert-sign"><img src="img/sign.png" alt="Firma"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════
-     REVIEWS
-═══════════════════════════════════ -->
-<section class="section-reviews">
-  <div class="wrapper">
-    <div class="sec-head fade-up">
-      <div class="sec-eyebrow">Testimonios reales</div>
-      <h2 class="sec-title">Resultados que<br><em>hablan solos</em></h2>
-    </div>
-
-    <div class="reviews-summary-bar fade-up">
-      <div class="rs-score">4.9</div>
-      <div class="rs-right">
-        <div class="rs-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="rs-count">Basado en <strong>2,847</strong> opiniones verificadas</div>
-        <div class="rs-bars">
-          <div class="rs-bar-row"><span>5&#9733;</span><div class="rs-track"><div class="rs-fill" style="width:91%"></div></div><span>91%</span></div>
-          <div class="rs-bar-row"><span>4&#9733;</span><div class="rs-track"><div class="rs-fill" style="width:6%"></div></div><span>6%</span></div>
-          <div class="rs-bar-row"><span>3&#9733;</span><div class="rs-track"><div class="rs-fill rs-fill--low" style="width:2%"></div></div><span>2%</span></div>
+    <!-- ═══════════════ PROBLEM ═══════════════ -->
+    <section class="section sec-dark">
+        <div class="wrapper">
+            <div class="sec-head fade-up">
+                <div class="eyebrow">El problema real</div>
+                <h2 class="sec-title">¿Por qué los hombres<br>acumulan <em>más grasa</em>?</h2>
+            </div>
+            <div class="two-col fade-up">
+                <div class="col-text">
+                    <h3>La grasa <span class="red">visceral masculina</span> — el enemigo oculto</h3>
+                    <p>La grasa visceral se acumula alrededor de los órganos vitales — tórax, abdomen y pelvis. Solo los hombres acumulan este tipo de grasa, que representa un peligro serio para la salud.</p>
+                    <p>Lo más peligroso: <strong>tener peso normal no garantiza la ausencia de grasa visceral.</strong></p>
+                    <div class="alert-box">
+                        ⚠️ Está demostrado que el <span class="red">98% de los hombres</span> tiene grasa visceral en exceso.
+                    </div>
+                </div>
+                <div class="col-img">
+                    <img src="img/fat_mike.png" alt="Grasa visceral">
+                    <div class="img-badge red-bg">⚠ Peligro real</div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+    </section>
 
-    <div class="reviews-grid">
-      <div class="review-card fade-up">
-        <div class="rc-header">
-          <div class="rc-ava rc-ava--1">JR</div>
-          <div class="rc-meta">
-            <span class="rc-name">Juan Rodr&#237;guez</span>
-            <span class="rc-loc">&#128205; Santo Domingo</span>
-          </div>
-          <span class="rc-verified">&#10004; Verificado</span>
+    <!-- ═══════════════ FAIL ═══════════════ -->
+    <section class="section sec-darker">
+        <div class="wrapper">
+            <div class="sec-head fade-up">
+                <div class="eyebrow">La verdad incómoda</div>
+                <h2 class="sec-title">Esta grasa <em>NO SE ELIMINA</em><br>con métodos comunes</h2>
+            </div>
+            <div class="fail-grid fade-up">
+                <div class="fail-card"><span class="fail-x">✗</span><span class="fail-name">Dietas</span></div>
+                <div class="fail-card"><span class="fail-x">✗</span><span class="fail-name">Control calórico</span></div>
+                <div class="fail-card"><span class="fail-x">✗</span><span class="fail-name">Entrenamientos</span></div>
+                <div class="fail-card"><span class="fail-x">✗</span><span class="fail-name">Pastillas populares</span></div>
+            </div>
+            <div class="fail-conclusion fade-up">
+                Estos métodos solo queman grasa subcutánea — son efectivos para mujeres,<br> pero <span class="red">para los hombres son inútiles</span> contra la grasa visceral.
+            </div>
         </div>
-        <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <span class="rc-result">&#8722;6 kg en 1 mes</span>
-        <p class="rc-text">Siempre he querido tener un cuerpo atl&#233;tico. Me pasaba horas en el gimnasio pero no lograba la definici&#243;n que quer&#237;a. Con BETTER ME en un mes "derret&#237;" 6 kilos de grasa manteniendo toda mi masa muscular. &#161;Las fotos de mis abdominales en Instagram obtuvieron 1.500 likes en 2 d&#237;as!</p>
-        <span class="rc-date">Hace 3 d&#237;as</span>
-      </div>
+    </section>
 
-      <div class="review-card fade-up">
-        <div class="rc-header">
-          <div class="rc-ava rc-ava--2">DM</div>
-          <div class="rc-meta">
-            <span class="rc-name">Daniel Mart&#237;nez</span>
-            <span class="rc-loc">&#128205; Santiago</span>
-          </div>
-          <span class="rc-verified">&#10004; Verificado</span>
+    <!-- ═══════════════ DANGERS ═══════════════ -->
+    <section class="section sec-dangers sec-dark">
+        <div class="wrapper">
+            <div class="sec-head  fade-up">
+                <div class="eyebrow">Consecuencias</div>
+                <h2 class="sec-title">¿Qué pasa si<br><em>no actúas</em> ahora?</h2>
+            </div>
+            <div class="danger-grid">
+                <div class="danger-card fade-up"><img src="img/li_3_1.png" alt="">
+                    <div><strong>Sistema cardiovascular</strong>
+                        <p>Trastornos del corazón y los vasos sanguíneos</p>
+                    </div>
+                </div>
+                <div class="danger-card fade-up"><img src="img/li_3_2.png" alt="">
+                    <div><strong>Tumores</strong>
+                        <p>Crecimientos anormales relacionados con grasa visceral</p>
+                    </div>
+                </div>
+                <div class="danger-card fade-up"><img src="img/li_3_3.png" alt="">
+                    <div><strong>Problemas hormonales</strong>
+                        <p>Opresión de la función sexual y testosterona baja</p>
+                    </div>
+                </div>
+                <div class="danger-card fade-up"><img src="img/li_3_4.png" alt="">
+                    <div><strong>Diabetes tipo II</strong>
+                        <p>Resistencia a la insulina causada por grasa interna</p>
+                    </div>
+                </div>
+                <div class="danger-card fade-up"><img src="img/li_3_5.png" alt="">
+                    <div><strong>Salud mental</strong>
+                        <p>Depresión, baja autoestima, insatisfacción personal</p>
+                    </div>
+                </div>
+                <div class="danger-card fade-up"><img src="img/li_3_6.png" alt="">
+                    <div><strong>Problemas respiratorios</strong>
+                        <p>Compresión de pulmones y diafragma</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <span class="rc-result">&#8722;20 kg en 3 meses</span>
-        <p class="rc-text">Me diagnosticaron pre-diabetes por obesidad. Con BETTER ME perd&#237; 20 kilos. Ahora entiendo lo incre&#237;ble que es tener un cuerpo sano. &#161;Las mujeres lo notan m&#225;s de lo que uno piensa!</p>
-        <span class="rc-date">Hace 1 semana</span>
-      </div>
+    </section>
 
-      <div class="review-card fade-up">
-        <div class="rc-header">
-          <div class="rc-ava rc-ava--3">PG</div>
-          <div class="rc-meta">
-            <span class="rc-name">Pedro Gonz&#225;lez</span>
-            <span class="rc-loc">&#128205; La Romana</span>
-          </div>
-          <span class="rc-verified">&#10004; Verificado</span>
+    <!-- ═══════════════ SOLUTION + BENEFITS (combined) ═══════════════ -->
+    <section class="section sec-darker solution-section combined-section">
+        <div class="solution-glow"></div>
+        <div class="wrapper">
+
+            <!-- заголовок блока -->
+            <div class="sec-head fade-up">
+                <div class="eyebrow">La solución</div>
+                <h2 class="sec-title">Por qué <em>BETTER ME</em><br>funciona donde otros fallan</h2>
+            </div>
+
+            <!-- 4 карточки механизма действия -->
+            <div class="solution-grid">
+                <div class="solution-card fade-up">
+                    <div class="sol-icon"><img src="img/li_4_1.png" alt=""></div>
+                    <div><strong>Destrucción celular directa</strong>
+                        <p>Penetra en las células grasas viscerales y las destruye desde el interior.</p>
+                    </div>
+                </div>
+                <div class="solution-card fade-up">
+                    <div class="sol-icon"><img src="img/li_4_2.png" alt=""></div>
+                    <div><strong>Cuerpo bien formado</strong>
+                        <p>Músculos definidos. Desaparece la barriga cervecera sin perder masa muscular.</p>
+                    </div>
+                </div>
+                <div class="solution-card fade-up">
+                    <div class="sol-icon"><img src="img/li_4_3.png" alt=""></div>
+                    <div><strong>Mejora del tono muscular</strong>
+                        <p>Mejor absorción de proteínas y prevención de la flacidez post-pérdida.</p>
+                    </div>
+                </div>
+                <div class="solution-card fade-up">
+                    <div class="sol-icon"><img src="img/li_4_4.png" alt=""></div>
+                    <div><strong>84% más eficiencia en gym</strong>
+                        <p>Los entrenamientos de fuerza son un 84% más efectivos con BETTER ME.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- разделитель -->
+            <div class="combined-divider fade-up">
+                <span>4 razones clave para elegir <em>BETTER ME</em></span>
+            </div>
+
+            <!-- 4 причины выбрать -->
+            <div class="benefits-grid">
+                <div class="benefit-item fade-up"><img src="img/li_5_1.png" alt=""><strong>100% seguro</strong><span>Sin efectos secundarios. Fórmula probada clínicamente</span></div>
+                <div class="benefit-item fade-up"><img src="img/li_5_2.png" alt=""><strong>Exclusivo</strong><span>No se vende en tiendas. Solo disponible aquí</span></div>
+                <div class="benefit-item fade-up"><img src="img/li_5_3.png" alt=""><strong>Millones satisfechos</strong><span>Eficacia comprobada en todo el mundo</span></div>
+                <div class="benefit-item fade-up"><img src="img/li_5_4.png" alt=""><strong>Recomendado</strong><span>Por destacados nutricionistas europeos</span></div>
+            </div>
+
         </div>
-        <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <span class="rc-result">&#8722;12 kg en 2 meses</span>
-        <p class="rc-text">Mi esposa me obligaba al gym y yo me res&#237;st&#237;a. Cuando descubr&#237; BETTER ME lo ped&#237; sin dudarlo. Perd&#237; 12 kilos en 2 meses y ella no pod&#237;a creerlo. &#161;Me alegra que esto sea solo para hombres!</p>
-        <span class="rc-date">Hace 2 semanas</span>
-      </div>
+    </section>
 
-      <div class="review-card fade-up">
-        <div class="rc-header">
-          <div class="rc-ava rc-ava--4">CR</div>
-          <div class="rc-meta">
-            <span class="rc-name">Carlos Reyes</span>
-            <span class="rc-loc">&#128205; Puerto Plata</span>
-          </div>
-          <span class="rc-verified">&#10004; Verificado</span>
+    <!-- ═══════════════ EXPERT ═══════════════ -->
+    <section class="section sec-darker expert-section">
+        <div class="expert-bg-wrap">
+            <img class="expert-bg-img" src="img/expert_bg.jpg" alt="">
+            <div class="expert-bg-fade"></div>
         </div>
-        <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <span class="rc-result">&#8722;9 kg en 6 semanas</span>
-        <p class="rc-text">Ten&#237;a 42 a&#241;os y nunca pude deshacerme de la barriga. Prob&#233; dietas, running, pastillas — nada. Con BETTER ME en 6 semanas perd&#237; 9 kg y me veo 10 a&#241;os m&#225;s joven. Mi jefe me pregunt&#243; qu&#233; hab&#237;a hecho.</p>
-        <span class="rc-date">Hace 3 semanas</span>
-      </div>
-
-      <div class="review-card fade-up">
-        <div class="rc-header">
-          <div class="rc-ava rc-ava--5">ML</div>
-          <div class="rc-meta">
-            <span class="rc-name">Miguel L&#243;pez</span>
-            <span class="rc-loc">&#128205; San Pedro de Macor&#237;s</span>
-          </div>
-          <span class="rc-verified">&#10004; Verificado</span>
+        <div class="wrapper expert-layout">
+            <div class="expert-left fade-up">
+                <div class="sec-head">
+                    <div class="eyebrow">Opinión experta</div>
+                    <h2 class="sec-title">Lo que dice<br><em>la ciencia</em></h2>
+                </div>
+            </div>
+            <div class="expert-right fade-up">
+                <div class="expert-box">
+                    <div class="quote-mark">“</div>
+                    <p class="expert-text">Los hombres no son conscientes de los peligros ocultos de la grasa visceral. La grasa se asienta en las paredes de los vasos sanguíneos y órganos internos, causando enfermedades que son mucho más fáciles de prevenir que curar.<br><br><strong>Para eliminar el exceso de grasa del cuerpo, recomiendo usar BETTER ME, desarrollado específicamente para el metabolismo masculino.</strong></p>
+                    <div class="expert-footer">
+                        <span class="expert-badge">✓ Recomendado</span>
+                        <img src="img/sign.png" alt="Firma" class="expert-sign">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <span class="rc-result">&#8722;15 kg en 10 semanas</span>
-        <p class="rc-text">Trabajo en oficina, ten&#237;a la cl&#225;sica panza. La energ&#237;a aument&#243; desde la primera semana. Baj&#233; 15 kilos y el colesterol se normaliz&#243; sin medicamentos. El m&#233;dico no pod&#237;a creer los resultados. &#161;Recomendado 100%!</p>
-        <span class="rc-date">Hace 1 mes</span>
-      </div>
+    </section>
 
-      <div class="review-card fade-up">
-        <div class="rc-header">
-          <div class="rc-ava rc-ava--6">AF</div>
-          <div class="rc-meta">
-            <span class="rc-name">Andr&#233;s Fern&#225;ndez</span>
-            <span class="rc-loc">&#128205; Hig&#252;ey</span>
-          </div>
-          <span class="rc-verified">&#10004; Verificado</span>
+    <!-- ═══════════════ REVIEWS ═══════════════ -->
+    <section class="section sec-dark" id="reviews">
+        <div class="wrapper">
+            <div class="sec-head fade-up">
+                <div class="eyebrow">Testimonios reales</div>
+                <h2 class="sec-title">Resultados que<br><em>hablan solos</em></h2>
+            </div>
+
+            <div class="rating-summary fade-up">
+                <div class="rs-score">4.9</div>
+                <div class="rs-right">
+                    <div class="rs-stars">★★★★★</div>
+                    <div class="rs-count">Basado en <strong>2,847</strong> opiniones verificadas</div>
+                    <div class="rs-bars">
+                        <div class="rs-row"><span>5★</span>
+                            <div class="rs-track">
+                                <div class="rs-fill" style="width:88%"></div>
+                            </div><span>88%</span></div>
+                        <div class="rs-row"><span>4★</span>
+                            <div class="rs-track">
+                                <div class="rs-fill" style="width:6%"></div>
+                            </div><span>6%</span></div>
+                        <div class="rs-row"><span>3★</span>
+                            <div class="rs-track">
+                                <div class="rs-fill rs-dim" style="width:2%"></div>
+                            </div><span>2%</span></div>
+                        <div class="rs-row"><span>2★</span>
+                            <div class="rs-track">
+                                <div class="rs-fill rs-dim-orange" style="width:1%"></div>
+                            </div><span>1%</span></div>
+                        <div class="rs-row"><span>1★</span>
+                            <div class="rs-track">
+                                <div class="rs-fill rs-dim-red" style="width:3%"></div>
+                            </div><span>3%</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reviews-pages-wrap">
+                <div class="reviews-track" id="reviewsTrack">
+                    <div class="reviews-page" data-page="0" style="display:block">
+                        <div class="reviews-grid">
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#1b5e20,#43a047)">JR</div>
+                                    <div class="rc-meta"><span class="rc-name">Juan Rodríguez</span><span class="rc-loc">📍 Santo Domingo</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−6 kg / 1 mes</span>
+                                <p>Siempre quise un cuerpo atlético pero no lograba la definición. Con BETTER ME en un mes derretí 6 kilos de grasa manteniendo toda mi masa muscular.</p>
+                                <span class="rc-date">Hace 2 días</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#0d47a1,#1976d2)">DM</div>
+                                    <div class="rc-meta"><span class="rc-name">Daniel Martínez</span><span class="rc-loc">📍 Santiago</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−20 kg / 3 meses</span>
+                                <p>Me diagnosticaron pre-diabetes por obesidad. Con BETTER ME perdí 20 kilos en 3 meses. Ahora me siento como nunca en mi vida.</p>
+                                <span class="rc-date">Hace 4 días</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#4a148c,#7b1fa2)">PG</div>
+                                    <div class="rc-meta"><span class="rc-name">Pedro González</span><span class="rc-loc">📍 La Romana</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−12 kg / 2 meses</span>
+                                <p>Mi esposa me obligaba al gym y yo me resistía. Descubrí BETTER ME y perdí 12 kilos en 2 meses. Ella no podía creerlo.</p>
+                                <span class="rc-date">Hace 6 días</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#bf360c,#f4511e)">CR</div>
+                                    <div class="rc-meta"><span class="rc-name">Carlos Reyes</span><span class="rc-loc">📍 Puerto Plata</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−9 kg / 6 semanas</span>
+                                <p>Tenía 42 años y nunca pude deshacerme de la barriga. Con BETTER ME en 6 semanas perdí 9 kg. Me veo 10 años más joven.</p>
+                                <span class="rc-date">Hace 1 semana</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#004d40,#00897b)">ML</div>
+                                    <div class="rc-meta"><span class="rc-name">Miguel López</span><span class="rc-loc">📍 San Pedro de Macorís</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−15 kg / 10 semanas</span>
+                                <p>Trabajo en oficina, tenía la clásica panza. La energía aumentó desde la primera semana. Bajé 15 kilos y el colesterol se normalizó.</p>
+                                <span class="rc-date">Hace 1 semana</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#880e4f,#c2185b)">AF</div>
+                                    <div class="rc-meta"><span class="rc-name">Andrés Fernández</span><span class="rc-loc">📍 Higüey</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−8 kg / 5 semanas</span>
+                                <p>Era escéptico pero mi hermano me convenció. En 5 semanas bajé 8 kilos y los músculos están mucho más definidos.</p>
+                                <span class="rc-date">Hace 10 días</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#263238,#546e7a)">RS</div>
+                                    <div class="rc-meta"><span class="rc-name">Roberto Sánchez</span><span class="rc-loc">📍 Barahona</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−11 kg / 7 semanas</span>
+                                <p>A los 50 años pensaba que era imposible. BETTER ME me demostró lo contrario. 11 kilos en 7 semanas y el azúcar en sangre mejoró.</p>
+                                <span class="rc-date">Hace 2 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#33691e,#7cb342)">JV</div>
+                                    <div class="rc-meta"><span class="rc-name">José Vargas</span><span class="rc-loc">📍 Bonao</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−7 kg / 4 semanas</span>
+                                <p>Llevo años entrenando y siempre me quedaba esa capa de grasa. Con BETTER ME en 4 semanas conseguí la definición que nunca logré.</p>
+                                <span class="rc-date">Hace 2 semanas</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews-page" data-page="1" style="display:none">
+                        <div class="reviews-grid">
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#e65100,#ff6d00)">EM</div>
+                                    <div class="rc-meta"><span class="rc-name">Eduardo Morales</span><span class="rc-loc">📍 Santiago Rodríguez</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−10 kg / 6 semanas</span>
+                                <p>Llevaba 5 años con la misma barriga. BETTER ME fue lo único que funcionó. Bajé 10 kilos y mi médico quedó impresionado.</p>
+                                <span class="rc-date">Hace 2 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#1a237e,#283593)">FT</div>
+                                    <div class="rc-meta"><span class="rc-name">Francisco Torres</span><span class="rc-loc">📍 Moca</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−14 kg / 8 semanas</span>
+                                <p>Probé todo tipo de dietas sin resultado. BETTER ME ataca la grasa desde adentro. En 8 semanas bajé 14 kilos con más fuerza.</p>
+                                <span class="rc-date">Hace 3 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#4e342e,#6d4c41)">LR</div>
+                                    <div class="rc-meta"><span class="rc-name">Luis Ramírez</span><span class="rc-loc">📍 San Francisco de Macorís</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−5 kg / 3 semanas</span>
+                                <p>Empecé a notar cambios desde la segunda semana. La ropa me queda diferente y tengo mucha más energía para trabajar.</p>
+                                <span class="rc-date">Hace 3 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#006064,#00838f)">HC</div>
+                                    <div class="rc-meta"><span class="rc-name">Héctor Cruz</span><span class="rc-loc">📍 Azua</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−18 kg / 3 meses</span>
+                                <p>Tengo 55 años y pensaba que mi metabolismo ya no respondía. Con BETTER ME en 3 meses perdí 18 kilos. Mi familia no me reconoce.</p>
+                                <span class="rc-date">Hace 3 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#37474f,#455a64)">RP</div>
+                                    <div class="rc-meta"><span class="rc-name">Ramón Peña</span><span class="rc-loc">📍 Cotuí</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−8 kg / 5 semanas</span>
+                                <p>El médico me recomendó bajar de peso por presión alta. Con BETTER ME bajé 8 kilos en 5 semanas y la presión se normalizó.</p>
+                                <span class="rc-date">Hace 4 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#1b5e20,#2e7d32)">WG</div>
+                                    <div class="rc-meta"><span class="rc-name">Wilmer García</span><span class="rc-loc">📍 Jarabacoa</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−13 kg / 9 semanas</span>
+                                <p>Soy entrenador personal y recomiendo BETTER ME a mis clientes más difíciles. Los resultados en grasa visceral son únicos.</p>
+                                <span class="rc-date">Hace 4 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#880e4f,#ad1457)">OM</div>
+                                    <div class="rc-meta"><span class="rc-name">Oscar Medina</span><span class="rc-loc">📍 La Vega</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−9 kg / 7 semanas</span>
+                                <p>Trabajo en construcción y la barriga no bajaba con el ejercicio. Con BETTER ME en 7 semanas perdí 9 kilos.</p>
+                                <span class="rc-date">Hace 1 mes</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#0d47a1,#1565c0)">NR</div>
+                                    <div class="rc-meta"><span class="rc-name">Nelson Rosario</span><span class="rc-loc">📍 Nagua</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−6 kg / 4 semanas</span>
+                                <p>A las 2 semanas ya notaba la ropa más suelta. Al mes, 6 kilos menos y el vientre casi plano. ¡Funciona de verdad!</p>
+                                <span class="rc-date">Hace 1 mes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews-page" data-page="2" style="display:none">
+                        <div class="reviews-grid">
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#bf360c,#d84315)">AM</div>
+                                    <div class="rc-meta"><span class="rc-name">Alexis Méndez</span><span class="rc-loc">📍 Baní</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−11 kg / 8 semanas</span>
+                                <p>Tengo diabetes tipo 2 y mi endocrinólogo me animó a bajar peso. BETTER ME me ayudó a perder 11 kilos y los niveles de glucosa mejoraron.</p>
+                                <span class="rc-date">Hace 5 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#004d40,#00695c)">EV</div>
+                                    <div class="rc-meta"><span class="rc-name">Ernesto Villar</span><span class="rc-loc">📍 Mao</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−16 kg / 11 semanas</span>
+                                <p>A mis 48 años me di cuenta que la barriga era un problema de salud. BETTER ME fue un antes y un después. 16 kilos en menos de 3 meses.</p>
+                                <span class="rc-date">Hace 5 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#4a148c,#6a1b9a)">GT</div>
+                                    <div class="rc-meta"><span class="rc-name">Gabriel Torres</span><span class="rc-loc">📍 Monte Cristi</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−7 kg / 5 semanas</span>
+                                <p>Mi entrenador me recomendó BETTER ME para eliminar la grasa abdominal. Funcionó perfecto, 7 kilos en 5 semanas.</p>
+                                <span class="rc-date">Hace 5 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#33691e,#558b2f)">SD</div>
+                                    <div class="rc-meta"><span class="rc-name">Salvador Díaz</span><span class="rc-loc">📍 Samaná</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−10 kg / 7 semanas</span>
+                                <p>En 7 semanas perdí 10 kilos y lo que más me sorprendió es que mis entrenamientos mejoraron mucho. Brutal producto.</p>
+                                <span class="rc-date">Hace 6 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#e65100,#ef6c00)">TO</div>
+                                    <div class="rc-meta"><span class="rc-name">Tomás Ortega</span><span class="rc-loc">📍 Dajabón</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−8 kg / 6 semanas</span>
+                                <p>Tenía 38 años y nunca había tomado suplementos. BETTER ME fue mi primera vez y los resultados fueron sorprendentes.</p>
+                                <span class="rc-date">Hace 6 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#263238,#37474f)">BF</div>
+                                    <div class="rc-meta"><span class="rc-name">Bruno Flores</span><span class="rc-loc">📍 Neyba</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−12 kg / 8 semanas</span>
+                                <p>Después de los 40 el metabolismo baja mucho. BETTER ME fue como resetear todo. Perdí 12 kilos y me siento como a los 30.</p>
+                                <span class="rc-date">Hace 7 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#006064,#00796b)">IG</div>
+                                    <div class="rc-meta"><span class="rc-name">Iván González</span><span class="rc-loc">📍 Elías Piña</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−5 kg / 3 semanas</span>
+                                <p>Lo empecé como prueba. En 3 semanas bajé 5 kilos y la barriga empezó a desaparecer. Seguiré con el segundo frasco.</p>
+                                <span class="rc-date">Hace 7 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#1a237e,#1565c0)">CM</div>
+                                    <div class="rc-meta"><span class="rc-name">César Moreno</span><span class="rc-loc">📍 Pedernales</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−17 kg / 12 semanas</span>
+                                <p>Soy camionero y mi estilo de vida no ayuda. BETTER ME me salvó. En 3 meses perdí 17 kilos sin cambiar mucho mi rutina.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews-page" data-page="3" style="display:none">
+                        <div class="reviews-grid">
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#880e4f,#c2185b)">MR</div>
+                                    <div class="rc-meta"><span class="rc-name">Manuel Ramos</span><span class="rc-loc">📍 Hato Mayor</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−9 kg / 6 semanas</span>
+                                <p>Mi esposa notó el cambio antes que yo. A las 6 semanas me preguntó qué estaba haciendo diferente. La respuesta fue BETTER ME.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#4e342e,#795548)">AP</div>
+                                    <div class="rc-meta"><span class="rc-name">Antonio Peña</span><span class="rc-loc">📍 El Seibo</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−14 kg / 10 semanas</span>
+                                <p>Después de una operación engordé bastante. BETTER ME me ayudó a recuperar mi peso. 14 kilos en 10 semanas sin efectos secundarios.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#1b5e20,#388e3c)">VH</div>
+                                    <div class="rc-meta"><span class="rc-name">Víctor Herrera</span><span class="rc-loc">📍 La Altagracia</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−8 kg / 5 semanas</span>
+                                <p>La primera semana ya tenía más energía. En la quinta semana había bajado 8 kilos. El abdomen se ve completamente diferente.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#0d47a1,#1976d2)">RL</div>
+                                    <div class="rc-meta"><span class="rc-name">Ricardo Luna</span><span class="rc-loc">📍 Constanza</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−11 kg / 7 semanas</span>
+                                <p>Tenía sobrepeso desde los 30 años. Con 45 decidí actuar. BETTER ME fue mi aliado. Once kilos menos en 7 semanas.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#bf360c,#f4511e)">FC</div>
+                                    <div class="rc-meta"><span class="rc-name">Felipe Castro</span><span class="rc-loc">📍 Villa Altagracia</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−6 kg / 4 semanas</span>
+                                <p>Compré con dudas pero los resultados me convencieron totalmente. Seis kilos en un mes y la energía por las mañanas es impresionante.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#004d40,#00897b)">JM</div>
+                                    <div class="rc-meta"><span class="rc-name">Jorge Medina</span><span class="rc-loc">📍 San Cristóbal</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−13 kg / 9 semanas</span>
+                                <p>Llevo 10 años con sobrepeso y ningún método funcionaba. BETTER ME atacó justo donde estaba el problema. En 9 semanas bajé 13 kilos.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#37474f,#546e7a)">PB</div>
+                                    <div class="rc-meta"><span class="rc-name">Pablo Báez</span><span class="rc-loc">📍 Monseñor Nouel</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−10 kg / 6 semanas</span>
+                                <p>Trabajo 12 horas al día y no tengo tiempo para el gym. BETTER ME fue la solución. Sin cambiar mi rutina bajé 10 kilos.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#33691e,#689f38)">ES</div>
+                                    <div class="rc-meta"><span class="rc-name">Enrique Suárez</span><span class="rc-loc">📍 San Juan de la Maguana</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−15 kg / 11 semanas</span>
+                                <p>Mi hermano mayor y yo usamos BETTER ME juntos. Los dos bajamos más de 10 kilos. En mi caso fueron 15 kilos en 11 semanas.</p>
+                                <span class="rc-date">Hace 3 meses</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews-page" data-page="4" style="display:none">
+                        <div class="reviews-grid">
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#4a148c,#7b1fa2)">HM</div>
+                                    <div class="rc-meta"><span class="rc-name">Hernán Marte</span><span class="rc-loc">📍 Salcedo</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−9 kg / 6 semanas</span>
+                                <p>Tenía presión alta y el médico me dijo que el peso era el problema. Con BETTER ME bajé 9 kilos y la presión está controlada.</p>
+                                <span class="rc-date">Hace 3 días</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#006064,#00838f)">RD</div>
+                                    <div class="rc-meta"><span class="rc-name">Reynaldo Durán</span><span class="rc-loc">📍 Yamasá</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−12 kg / 8 semanas</span>
+                                <p>Soy policía y el trabajo nocturno me hizo engordar. BETTER ME me ayudó a recuperar la forma. 12 kilos en 8 semanas.</p>
+                                <span class="rc-date">Hace 5 días</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#263238,#455a64)">AO</div>
+                                    <div class="rc-meta"><span class="rc-name">Aurelio Ortiz</span><span class="rc-loc">📍 Las Matas de Farfán</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−7 kg / 5 semanas</span>
+                                <p>Mi jefe me preguntó si había empezado a hacer ejercicio. La verdad es que solo tomé BETTER ME. 7 kilos en 5 semanas.</p>
+                                <span class="rc-date">Hace 1 semana</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#880e4f,#ad1457)">MC</div>
+                                    <div class="rc-meta"><span class="rc-name">Marcos Castillo</span><span class="rc-loc">📍 Barahona</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−10 kg / 7 semanas</span>
+                                <p>Probé BETTER ME después de ver los resultados de un compañero. Quedé impresionado. 10 kilos en 7 semanas.</p>
+                                <span class="rc-date">Hace 1 semana</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#1b5e20,#2e7d32)">DV</div>
+                                    <div class="rc-meta"><span class="rc-name">David Vargas</span><span class="rc-loc">📍 Cotuí</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−8 kg / 5 semanas</span>
+                                <p>Lo que más me gustó es que no perdí músculo mientras bajaba grasa. En 5 semanas perdí 8 kilos y me veo más definido.</p>
+                                <span class="rc-date">Hace 2 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#bf360c,#e64a19)">JP</div>
+                                    <div class="rc-meta"><span class="rc-name">Julián Pedroza</span><span class="rc-loc">📍 Moca</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−14 kg / 9 semanas</span>
+                                <p>Tenía 44 años y sentía que mi cuerpo ya no respondía. BETTER ME cambió todo. 14 kilos en 9 semanas.</p>
+                                <span class="rc-date">Hace 2 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#0d47a1,#283593)">GL</div>
+                                    <div class="rc-meta"><span class="rc-name">Gustavo Lara</span><span class="rc-loc">📍 Nagua</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−6 kg / 4 semanas</span>
+                                <p>Compré el primer frasco sin muchas expectativas. Me sorprendieron los resultados desde la segunda semana. 6 kilos en un mes.</p>
+                                <span class="rc-date">Hace 3 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#e65100,#ef6c00)">SA</div>
+                                    <div class="rc-meta"><span class="rc-name">Sergio Arias</span><span class="rc-loc">📍 Higüey</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−11 kg / 7 semanas</span>
+                                <p>Trabajo de camionero y comía muy mal. BETTER ME aceleró mi metabolismo. 11 kilos en 7 semanas sin hacer dieta.</p>
+                                <span class="rc-date">Hace 3 semanas</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews-page" data-page="5" style="display:none">
+                        <div class="reviews-grid">
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#004d40,#00695c)">NN</div>
+                                    <div class="rc-meta"><span class="rc-name">Nicolás Núñez</span><span class="rc-loc">📍 Boca Chica</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−9 kg / 6 semanas</span>
+                                <p>La barriga bajó primero y luego el cuerpo se fue definiendo. 9 kilos en 6 semanas con BETTER ME.</p>
+                                <span class="rc-date">Hace 3 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#33691e,#558b2f)">RB</div>
+                                    <div class="rc-meta"><span class="rc-name">Rubén Batista</span><span class="rc-loc">📍 La Vega</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−13 kg / 9 semanas</span>
+                                <p>Soy maestro y el estrés me hizo subir de peso. BETTER ME me devolvió la confianza. 13 kilos en 9 semanas.</p>
+                                <span class="rc-date">Hace 4 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#4e342e,#6d4c41)">OF</div>
+                                    <div class="rc-meta"><span class="rc-name">Orlando Flores</span><span class="rc-loc">📍 Azua</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−7 kg / 5 semanas</span>
+                                <p>Mi doctor me habló de los peligros de la grasa visceral. Empecé BETTER ME y en 5 semanas bajé 7 kilos. Los análisis mejoraron.</p>
+                                <span class="rc-date">Hace 4 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#37474f,#546e7a)">IS</div>
+                                    <div class="rc-meta"><span class="rc-name">Ignacio Soto</span><span class="rc-loc">📍 San Francisco de Macorís</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−16 kg / 11 semanas</span>
+                                <p>Con 39 años decidí actuar en serio. BETTER ME fue lo mejor que probé. 16 kilos en 11 semanas.</p>
+                                <span class="rc-date">Hace 5 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#880e4f,#c2185b)">FH</div>
+                                    <div class="rc-meta"><span class="rc-name">Fernando Heredia</span><span class="rc-loc">📍 Monte Plata</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−8 kg / 5 semanas</span>
+                                <p>Lo tomé junto con mi hermano. Los dos bajamos de peso. Yo 8 kilos en 5 semanas, mi hermano 11. Resultados brutales.</p>
+                                <span class="rc-date">Hace 5 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#1a237e,#1565c0)">TA</div>
+                                    <div class="rc-meta"><span class="rc-name">Tomás Alvarado</span><span class="rc-loc">📍 San Pedro de Macorís</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−10 kg / 7 semanas</span>
+                                <p>Después de la pandemia engordé 15 kilos. Con BETTER ME recuperé mi figura. 10 kilos en 7 semanas.</p>
+                                <span class="rc-date">Hace 6 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#006064,#00796b)">PM</div>
+                                    <div class="rc-meta"><span class="rc-name">Pablo Matos</span><span class="rc-loc">📍 La Romana</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−12 kg / 8 semanas</span>
+                                <p>Trabajo en ventas y la vida sedentaria me pasó factura. BETTER ME fue el cambio que necesitaba. 12 kilos en 8 semanas.</p>
+                                <span class="rc-date">Hace 6 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#4a148c,#6a1b9a)">EG</div>
+                                    <div class="rc-meta"><span class="rc-name">Edgar Guzmán</span><span class="rc-loc">📍 Santiago</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−5 kg / 3 semanas</span>
+                                <p>Tomé BETTER ME solo 3 semanas y ya noté cambios importantes. La ropa me queda diferente y tengo mucha más energía.</p>
+                                <span class="rc-date">Hace 7 semanas</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews-page" data-page="6" style="display:none">
+                        <div class="reviews-grid">
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#bf360c,#d84315)">LN</div>
+                                    <div class="rc-meta"><span class="rc-name">Leonardo Núñez</span><span class="rc-loc">📍 Puerto Plata</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−11 kg / 8 semanas</span>
+                                <p>Mi entrenador me lo recomendó después de estancarme en el gym. BETTER ME rompió el estancamiento. 11 kilos en 8 semanas.</p>
+                                <span class="rc-date">Hace 7 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#1b5e20,#43a047)">AM2</div>
+                                    <div class="rc-meta"><span class="rc-name">Alberto Molina</span><span class="rc-loc">📍 Jarabacoa</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−9 kg / 6 semanas</span>
+                                <p>Siempre creí que los suplementos no funcionaban. BETTER ME me demostró lo contrario. 9 kilos en 6 semanas.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#0d47a1,#1976d2)">VR</div>
+                                    <div class="rc-meta"><span class="rc-name">Vicente Reyes</span><span class="rc-loc">📍 Baní</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−14 kg / 10 semanas</span>
+                                <p>Tenía 52 años y pensé que era demasiado tarde. BETTER ME me devolvió la esperanza. 14 kilos en 10 semanas.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#e65100,#ff6d00)">CO</div>
+                                    <div class="rc-meta"><span class="rc-name">Carlos Ogando</span><span class="rc-loc">📍 Santo Domingo Este</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−7 kg / 4 semanas</span>
+                                <p>En 4 semanas bajé 7 kilos y la diferencia en el espejo es brutal. Ya pedí el tercer frasco de BETTER ME.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#004d40,#00897b)">HG</div>
+                                    <div class="rc-meta"><span class="rc-name">Higinio García</span><span class="rc-loc">📍 El Seibo</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−10 kg / 7 semanas</span>
+                                <p>Trabajo en el campo pero la barriga no bajaba. BETTER ME la eliminó en 7 semanas. 10 kilos menos.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#263238,#37474f)">RV</div>
+                                    <div class="rc-meta"><span class="rc-name">Rodrigo Ventura</span><span class="rc-loc">📍 Hato Mayor</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−8 kg / 5 semanas</span>
+                                <p>En las primeras 5 semanas con BETTER ME bajé 8 kilos y sigo mejorando cada semana. Excelente producto.</p>
+                                <span class="rc-date">Hace 3 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#33691e,#7cb342)">AG</div>
+                                    <div class="rc-meta"><span class="rc-name">Ángel Gutiérrez</span><span class="rc-loc">📍 Cotui</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−13 kg / 9 semanas</span>
+                                <p>Soy enfermero y sé que la grasa visceral es peligrosa. Tomé BETTER ME de forma preventiva. 13 kilos menos.</p>
+                                <span class="rc-date">Hace 3 días</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#880e4f,#ad1457)">BM</div>
+                                    <div class="rc-meta"><span class="rc-name">Bernardo Marte</span><span class="rc-loc">📍 Neyba</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−6 kg / 4 semanas</span>
+                                <p>Mi cardiólogo me recomendó bajar de peso urgente. BETTER ME fue mi aliado. 6 kilos en 4 semanas.</p>
+                                <span class="rc-date">Hace 5 días</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews-page" data-page="7" style="display:none">
+                        <div class="reviews-grid">
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#4e342e,#795548)">OC</div>
+                                    <div class="rc-meta"><span class="rc-name">Orlando Cruz</span><span class="rc-loc">📍 Elías Piña</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−11 kg / 8 semanas</span>
+                                <p>Soy electricista y trabajo mucho pero seguía gordo. BETTER ME fue diferente a todo lo que probé. 11 kilos en 8 semanas.</p>
+                                <span class="rc-date">Hace 1 semana</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#006064,#00838f)">JN</div>
+                                    <div class="rc-meta"><span class="rc-name">Juan Noboa</span><span class="rc-loc">📍 Dajabón</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−9 kg / 6 semanas</span>
+                                <p>Probé BETTER ME por curiosidad. A las 3 semanas ya notaba cambios. A las 6 semanas había bajado 9 kilos.</p>
+                                <span class="rc-date">Hace 1 semana</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#1a237e,#283593)">KP</div>
+                                    <div class="rc-meta"><span class="rc-name">Kevin Polanco</span><span class="rc-loc">📍 Villa Altagracia</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−12 kg / 8 semanas</span>
+                                <p>Con BETTER ME en 8 semanas recuperé mi peso de soltero. Mi esposa muy contenta con el resultado.</p>
+                                <span class="rc-date">Hace 2 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#bf360c,#f4511e)">YM</div>
+                                    <div class="rc-meta"><span class="rc-name">Yunior Martínez</span><span class="rc-loc">📍 Monseñor Nouel</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−7 kg / 5 semanas</span>
+                                <p>En 5 semanas perdí 7 kilos con BETTER ME. Lo seguiré usando sin ninguna duda. Muy recomendado.</p>
+                                <span class="rc-date">Hace 2 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#004d40,#00695c)">TC</div>
+                                    <div class="rc-meta"><span class="rc-name">Tulio Castillo</span><span class="rc-loc">📍 Pedernales</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−15 kg / 11 semanas</span>
+                                <p>A los 47 años con BETTER ME logré lo que no pude en 10 años. 15 kilos menos en 11 semanas.</p>
+                                <span class="rc-date">Hace 3 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#4a148c,#7b1fa2)">GR</div>
+                                    <div class="rc-meta"><span class="rc-name">Gonzalo Rivas</span><span class="rc-loc">📍 Samaná</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−8 kg / 5 semanas</span>
+                                <p>Las primeras 5 semanas bajé 8 kilos. Ahora sigo con mantenimiento y me siento excelente cada día.</p>
+                                <span class="rc-date">Hace 3 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#1b5e20,#388e3c)">DF</div>
+                                    <div class="rc-meta"><span class="rc-name">Diego Ferreras</span><span class="rc-loc">📍 Constanza</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−10 kg / 7 semanas</span>
+                                <p>Soy cocinero y probé BETTER ME sin cambiar mi dieta. 10 kilos en 7 semanas solo con el suplemento.</p>
+                                <span class="rc-date">Hace 3 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#e65100,#ef6c00)">XL</div>
+                                    <div class="rc-meta"><span class="rc-name">Xavier Liriano</span><span class="rc-loc">📍 San Cristóbal</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−14 kg / 9 semanas</span>
+                                <p>Después de un accidente de coche engordé mucho. BETTER ME me ayudó a recuperarme. 14 kilos en 9 semanas.</p>
+                                <span class="rc-date">Hace 4 semanas</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews-page" data-page="8" style="display:none">
+                        <div class="reviews-grid">
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#37474f,#455a64)">SM</div>
+                                    <div class="rc-meta"><span class="rc-name">Santiago Méndez</span><span class="rc-loc">📍 Yamasá</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−6 kg / 4 semanas</span>
+                                <p>6 kilos en 4 semanas con BETTER ME y la barriga prácticamente desapareció. Producto excelente.</p>
+                                <span class="rc-date">Hace 4 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#33691e,#689f38)">WC</div>
+                                    <div class="rc-meta"><span class="rc-name">Willy Comprés</span><span class="rc-loc">📍 Las Matas</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−9 kg / 6 semanas</span>
+                                <p>Los turnos nocturnos me engordaron. BETTER ME normalizó mi metabolismo. 9 kilos en 6 semanas.</p>
+                                <span class="rc-date">Hace 5 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#880e4f,#c2185b)">EB</div>
+                                    <div class="rc-meta"><span class="rc-name">Eugenio Bisonó</span><span class="rc-loc">📍 Salcedo</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−11 kg / 7 semanas</span>
+                                <p>Mi hermano perdió peso con BETTER ME y yo seguí su ejemplo. 11 kilos en 7 semanas. Los dos más delgados.</p>
+                                <span class="rc-date">Hace 5 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#0d47a1,#1565c0)">IR</div>
+                                    <div class="rc-meta"><span class="rc-name">Ismael Reyes</span><span class="rc-loc">📍 Monte Plata</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−13 kg / 9 semanas</span>
+                                <p>Tenía 56 años y pensé que era muy tarde. BETTER ME me demostró que no. 13 kilos en 9 semanas.</p>
+                                <span class="rc-date">Hace 6 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#4e342e,#6d4c41)">GC</div>
+                                    <div class="rc-meta"><span class="rc-name">Gilberto Cabrera</span><span class="rc-loc">📍 Boca Chica</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−7 kg / 5 semanas</span>
+                                <p>El estrés y el sedentarismo me afectaron. BETTER ME fue la solución perfecta. 7 kilos en 5 semanas.</p>
+                                <span class="rc-date">Hace 6 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#006064,#00796b)">NM</div>
+                                    <div class="rc-meta"><span class="rc-name">Narciso Medina</span><span class="rc-loc">📍 San Juan de la Maguana</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−16 kg / 11 semanas</span>
+                                <p>Llevaba 7 años intentando bajar de peso. BETTER ME fue lo único que funcionó. 16 kilos en 11 semanas.</p>
+                                <span class="rc-date">Hace 7 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#bf360c,#d84315)">PR</div>
+                                    <div class="rc-meta"><span class="rc-name">Patricio Rodríguez</span><span class="rc-loc">📍 La Altagracia</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−8 kg / 5 semanas</span>
+                                <p>8 kilos en 5 semanas con BETTER ME. La barriga desapareció. Nunca pensé que funcionaría tan rápido.</p>
+                                <span class="rc-date">Hace 7 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#1b5e20,#2e7d32)">FL</div>
+                                    <div class="rc-meta"><span class="rc-name">Federico Luciano</span><span class="rc-loc">📍 Azua</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−12 kg / 8 semanas</span>
+                                <p>Soy bombero. El trabajo es físico pero la barriga no bajaba. BETTER ME la atacó específicamente. 12 kilos en 8 semanas.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews-page" data-page="9" style="display:none">
+                        <div class="reviews-grid">
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#4a148c,#6a1b9a)">SB</div>
+                                    <div class="rc-meta"><span class="rc-name">Silvio Beltre</span><span class="rc-loc">📍 Mao</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−9 kg / 6 semanas</span>
+                                <p>Probé BETTER ME después de ver los resultados de un vecino. No me arrepiento. 9 kilos en 6 semanas.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#e65100,#ff6d00)">LC</div>
+                                    <div class="rc-meta"><span class="rc-name">Lorenzo Cuello</span><span class="rc-loc">📍 Santiago Rodríguez</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−10 kg / 7 semanas</span>
+                                <p>A los 43 años con BETTER ME logré bajar 10 kilos en 7 semanas. Mis colegas me preguntan cuál es mi secreto.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#263238,#546e7a)">FP</div>
+                                    <div class="rc-meta"><span class="rc-name">Felipe Pichardo</span><span class="rc-loc">📍 Baní</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−14 kg / 10 semanas</span>
+                                <p>Tenía colesterol alto y exceso de peso. BETTER ME resolvió los dos problemas. 14 kilos menos y colesterol normalizado.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#004d40,#00897b)">ZM</div>
+                                    <div class="rc-meta"><span class="rc-name">Zacarías Mejía</span><span class="rc-loc">📍 Puerto Plata</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−7 kg / 4 semanas</span>
+                                <p>Primer suplemento que funciona de verdad en mi caso. 7 kilos en 4 semanas y la energía es increíble.</p>
+                                <span class="rc-date">Hace 3 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#33691e,#7cb342)">GS</div>
+                                    <div class="rc-meta"><span class="rc-name">Gerardo Suero</span><span class="rc-loc">📍 La Romana</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−11 kg / 8 semanas</span>
+                                <p>BETTER ME cambió mi vida. Llevaba años con la misma barriga y en 8 semanas desapareció. 11 kilos menos.</p>
+                                <span class="rc-date">Hace 3 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#880e4f,#ad1457)">TG</div>
+                                    <div class="rc-meta"><span class="rc-name">Teodoro García</span><span class="rc-loc">📍 Higüey</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−8 kg / 5 semanas</span>
+                                <p>Desde la segunda semana ya notaba diferencia. 8 kilos en 5 semanas con BETTER ME. Lo recomiendo totalmente.</p>
+                                <span class="rc-date">Hace 3 días</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#1a237e,#283593)">MB</div>
+                                    <div class="rc-meta"><span class="rc-name">Mauricio Bueno</span><span class="rc-loc">📍 San Pedro de Macorís</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−13 kg / 9 semanas</span>
+                                <p>Después de los 50 pensé que era imposible adelgazar. BETTER ME me devolvió la esperanza. 13 kilos en 9 semanas.</p>
+                                <span class="rc-date">Hace 5 días</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#4e342e,#795548)">JC</div>
+                                    <div class="rc-meta"><span class="rc-name">Julián Comprés</span><span class="rc-loc">📍 Jarabacoa</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−6 kg / 4 semanas</span>
+                                <p>Empecé por curiosidad y me quedé por los resultados. 6 kilos en 4 semanas y la ropa de hace 3 años me vuelve a quedar.</p>
+                                <span class="rc-date">Hace 1 semana</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews-page" data-page="10" style="display:none">
+                        <div class="reviews-grid">
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#006064,#00838f)">AC</div>
+                                    <div class="rc-meta"><span class="rc-name">Arturo Castañeda</span><span class="rc-loc">📍 Monte Cristi</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−9 kg / 6 semanas</span>
+                                <p>Soy agricultor. El trabajo duro no impedía que acumulara grasa abdominal. BETTER ME la eliminó. 9 kilos en 6 semanas.</p>
+                                <span class="rc-date">Hace 1 semana</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#bf360c,#f4511e)">RN</div>
+                                    <div class="rc-meta"><span class="rc-name">Rafael Núñez</span><span class="rc-loc">📍 El Seibo</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−12 kg / 8 semanas</span>
+                                <p>Toda la familia bajando de peso con BETTER ME. Yo 12 kilos en 8 semanas. Lo recomiendo sin dudar.</p>
+                                <span class="rc-date">Hace 2 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#1b5e20,#388e3c)">VM</div>
+                                    <div class="rc-meta"><span class="rc-name">Virgilio Morel</span><span class="rc-loc">📍 Hato Mayor</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−8 kg / 5 semanas</span>
+                                <p>BETTER ME como regalo de cumpleaños a mí mismo a los 40 años. Fue el mejor regalo. 8 kilos en 5 semanas.</p>
+                                <span class="rc-date">Hace 2 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#0d47a1,#1976d2)">CL</div>
+                                    <div class="rc-meta"><span class="rc-name">Claudio Lora</span><span class="rc-loc">📍 Cotui</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−10 kg / 7 semanas</span>
+                                <p>Después de dejar de fumar engordé 12 kilos. BETTER ME me ayudó a eliminar 10 de esos kilos en 7 semanas.</p>
+                                <span class="rc-date">Hace 3 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#4a148c,#7b1fa2)">BO</div>
+                                    <div class="rc-meta"><span class="rc-name">Boris Ortega</span><span class="rc-loc">📍 Neyba</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−15 kg / 10 semanas</span>
+                                <p>BETTER ME atacó todo a la vez. 15 kilos en 10 semanas y todos los valores normalizados.</p>
+                                <span class="rc-date">Hace 3 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#e65100,#ef6c00)">HC2</div>
+                                    <div class="rc-meta"><span class="rc-name">Heriberto Canela</span><span class="rc-loc">📍 Dajabón</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−7 kg / 5 semanas</span>
+                                <p>Después de los 35 empecé a acumular barriga. BETTER ME la eliminó en 5 semanas. 7 kilos menos.</p>
+                                <span class="rc-date">Hace 3 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#37474f,#455a64)">RR</div>
+                                    <div class="rc-meta"><span class="rc-name">Ramiro Rosario</span><span class="rc-loc">📍 Villa Altagracia</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−11 kg / 7 semanas</span>
+                                <p>Soy mecánico. Trabajo duro pero la barriga seguía. BETTER ME fue la solución. 11 kilos en 7 semanas.</p>
+                                <span class="rc-date">Hace 4 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#004d40,#00695c)">EC</div>
+                                    <div class="rc-meta"><span class="rc-name">Evaristo Cruz</span><span class="rc-loc">📍 Constanza</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−9 kg / 6 semanas</span>
+                                <p>La ciencia detrás del producto me convenció. El resultado confirmó todo: 9 kilos en 6 semanas con BETTER ME.</p>
+                                <span class="rc-date">Hace 4 semanas</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews-page" data-page="11" style="display:none">
+                        <div class="reviews-grid">
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#33691e,#558b2f)">AM3</div>
+                                    <div class="rc-meta"><span class="rc-name">Amado Mejía</span><span class="rc-loc">📍 Yamasá</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−13 kg / 9 semanas</span>
+                                <p>A mis 61 años con BETTER ME logré bajar 13 kilos en 9 semanas. Mi médico lo recomienda a otros pacientes.</p>
+                                <span class="rc-date">Hace 5 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#880e4f,#c2185b)">NB</div>
+                                    <div class="rc-meta"><span class="rc-name">Nicanor Báez</span><span class="rc-loc">📍 Las Matas de Farfán</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−8 kg / 5 semanas</span>
+                                <p>No solo bajé 8 kilos en 5 semanas, sino que me siento con una vitalidad increíble gracias a BETTER ME.</p>
+                                <span class="rc-date">Hace 5 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#1a237e,#1565c0)">FV</div>
+                                    <div class="rc-meta"><span class="rc-name">Fabián Vega</span><span class="rc-loc">📍 Monte Plata</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−6 kg / 1 mes</span>
+                                <p>Primer mes con BETTER ME: 6 kilos menos. Segundo mes: 5 kilos más. Los resultados no paran.</p>
+                                <span class="rc-date">Hace 6 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#4e342e,#6d4c41)">MG</div>
+                                    <div class="rc-meta"><span class="rc-name">Marcelo Genao</span><span class="rc-loc">📍 Boca Chica</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−14 kg / 10 semanas</span>
+                                <p>El médico me advirtió sobre la grasa visceral. BETTER ME fue mi respuesta. 14 kilos en 10 semanas.</p>
+                                <span class="rc-date">Hace 6 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#006064,#00796b)">PC</div>
+                                    <div class="rc-meta"><span class="rc-name">Paulino Contreras</span><span class="rc-loc">📍 San Cristóbal</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−10 kg / 7 semanas</span>
+                                <p>Mucho estrés y poca actividad. BETTER ME normalizó mi metabolismo. 10 kilos en 7 semanas trabajando sentado.</p>
+                                <span class="rc-date">Hace 7 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#bf360c,#d84315)">CA</div>
+                                    <div class="rc-meta"><span class="rc-name">Cristóbal Almonte</span><span class="rc-loc">📍 Salcedo</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−7 kg / 5 semanas</span>
+                                <p>Mi compañero de trabajo bajó 10 kilos con BETTER ME. Yo empecé y ya llevo 7 kilos menos en 5 semanas.</p>
+                                <span class="rc-date">Hace 7 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#1b5e20,#2e7d32)">JL</div>
+                                    <div class="rc-meta"><span class="rc-name">Jonás Liriano</span><span class="rc-loc">📍 Azua</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−12 kg / 8 semanas</span>
+                                <p>Usé BETTER ME siguiendo las instrucciones. El resultado fue perfecto: 12 kilos en 8 semanas y abdomen plano.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#4a148c,#6a1b9a)">EH</div>
+                                    <div class="rc-meta"><span class="rc-name">Ezequiel Hernández</span><span class="rc-loc">📍 Mao</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−9 kg / 6 semanas</span>
+                                <p>Empecé con BETTER ME sin hacer dieta ni ejercicio extra. Solo el suplemento. En 6 semanas bajé 9 kilos.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews-page" data-page="12" style="display:none">
+                        <div class="reviews-grid">
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#e65100,#ff6d00)">BV</div>
+                                    <div class="rc-meta"><span class="rc-name">Bladimir Vásquez</span><span class="rc-loc">📍 Santiago</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−11 kg / 7 semanas</span>
+                                <p>Tengo una tienda y paso todo el día sentado. BETTER ME fue ideal. 11 kilos en 7 semanas.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#263238,#37474f)">IO</div>
+                                    <div class="rc-meta"><span class="rc-name">Isidro Ogando</span><span class="rc-loc">📍 La Vega</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−8 kg / 5 semanas</span>
+                                <p>A los 39 años decidí actuar antes de que el problema fuera mayor. BETTER ME: 8 kilos en 5 semanas.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#004d40,#00897b)">LG</div>
+                                    <div class="rc-meta"><span class="rc-name">Lorenzo Guerrero</span><span class="rc-loc">📍 Puerto Plata</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−15 kg / 11 semanas</span>
+                                <p>Llevaba 8 años queriendo bajar de peso. BETTER ME lo logró en 11 semanas. 15 kilos menos.</p>
+                                <span class="rc-date">Hace 3 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#33691e,#7cb342)">SM2</div>
+                                    <div class="rc-meta"><span class="rc-name">Simón Matos</span><span class="rc-loc">📍 Higüey</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−6 kg / 4 semanas</span>
+                                <p>BETTER ME fue mi primer suplemento. 6 kilos en 4 semanas y la barriga visiblemente reducida.</p>
+                                <span class="rc-date">Hace 3 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#880e4f,#ad1457)">AB</div>
+                                    <div class="rc-meta"><span class="rc-name">Agustín Beltrán</span><span class="rc-loc">📍 La Romana</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−10 kg / 7 semanas</span>
+                                <p>Soy taxista y paso muchas horas sentado. BETTER ME fue la solución perfecta. 10 kilos en 7 semanas.</p>
+                                <span class="rc-date">Hace 3 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#1a237e,#283593)">QR</div>
+                                    <div class="rc-meta"><span class="rc-name">Quintín Reyes</span><span class="rc-loc">📍 San Pedro de Macorís</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−13 kg / 9 semanas</span>
+                                <p>Con 54 años y BETTER ME logré lo que pensé imposible. 13 kilos en 9 semanas. Me veo 15 años más joven.</p>
+                                <span class="rc-date">Hace 3 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#bf360c,#f4511e)">KV</div>
+                                    <div class="rc-meta"><span class="rc-name">Kevin Vásquez</span><span class="rc-loc">📍 Santo Domingo Norte</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−9 kg / 6 semanas</span>
+                                <p>El estrés de los exámenes universitarios me hizo engordar. BETTER ME me devolvió la figura. 9 kilos en 6 semanas.</p>
+                                <span class="rc-date">Hace 3 días</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#004d40,#00695c)">MM</div>
+                                    <div class="rc-meta"><span class="rc-name">Marcos Mora</span><span class="rc-loc">📍 Santo Domingo Este</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−12 kg / 8 semanas</span>
+                                <p>Empecé BETTER ME el día de mi cumpleaños número 45. Fue el mejor regalo que me pude dar. 12 kilos en 8 semanas.</p>
+                                <span class="rc-date">Hace 5 días</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews-page" data-page="13" style="display:none">
+                        <div class="reviews-grid">
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#37474f,#546e7a)">DC</div>
+                                    <div class="rc-meta"><span class="rc-name">Darío Castillo</span><span class="rc-loc">📍 San Cristóbal</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−7 kg / 5 semanas</span>
+                                <p>Un amigo del trabajo bajó 10 kilos con BETTER ME. En 5 semanas llevo 7 kilos menos yo también.</p>
+                                <span class="rc-date">Hace 1 semana</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#1b5e20,#43a047)">HT</div>
+                                    <div class="rc-meta"><span class="rc-name">Hilario Torres</span><span class="rc-loc">📍 Santiago</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−10 kg / 7 semanas</span>
+                                <p>Trabajo como chef y pruebo comida todo el día. Con BETTER ME logré perder 10 kilos en 7 semanas.</p>
+                                <span class="rc-date">Hace 2 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#e65100,#ef6c00)">ON</div>
+                                    <div class="rc-meta"><span class="rc-name">Omar Núñez</span><span class="rc-loc">📍 La Vega</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−8 kg / 5 semanas</span>
+                                <p>Llevo 3 años intentando bajar la barriga. BETTER ME lo logró en 5 semanas. 8 kilos menos.</p>
+                                <span class="rc-date">Hace 2 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#0d47a1,#1565c0)">LE</div>
+                                    <div class="rc-meta"><span class="rc-name">Luis Encarnación</span><span class="rc-loc">📍 Puerto Plata</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−14 kg / 10 semanas</span>
+                                <p>Mi médico me dijo que tenía riesgo cardiovascular. Con BETTER ME en 10 semanas bajé 14 kilos. Análisis perfectos.</p>
+                                <span class="rc-date">Hace 3 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#263238,#455a64)">AG2</div>
+                                    <div class="rc-meta"><span class="rc-name">Alfredo Grullón</span><span class="rc-loc">📍 Higüey</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−6 kg / 4 semanas</span>
+                                <p>Lo tomé sin cambiar nada más. Bajé 6 kilos en 4 semanas y me sentí bien en todo momento.</p>
+                                <span class="rc-date">Hace 3 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#4a148c,#7b1fa2)">NV</div>
+                                    <div class="rc-meta"><span class="rc-name">Noel Varela</span><span class="rc-loc">📍 Barahona</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−11 kg / 8 semanas</span>
+                                <p>Soy profesor universitario. Vida sedentaria total. BETTER ME fue lo único que me ayudó. 11 kilos en 8 semanas.</p>
+                                <span class="rc-date">Hace 4 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#880e4f,#c2185b)">RF</div>
+                                    <div class="rc-meta"><span class="rc-name">Roberto Ferreras</span><span class="rc-loc">📍 San Pedro de Macorís</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−9 kg / 6 semanas</span>
+                                <p>Empecé a tomar BETTER ME después de leer sobre la grasa visceral. 9 kilos en 6 semanas. Exactamente lo esperado.</p>
+                                <span class="rc-date">Hace 4 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#004d40,#00897b)">YB</div>
+                                    <div class="rc-meta"><span class="rc-name">Yoel Batista</span><span class="rc-loc">📍 Bonao</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−13 kg / 9 semanas</span>
+                                <p>Me diagnosticaron hígado graso. BETTER ME me ayudó a revertirlo. 13 kilos menos en 9 semanas y el hígado normalizado.</p>
+                                <span class="rc-date">Hace 5 semanas</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews-page" data-page="14" style="display:none">
+                        <div class="reviews-grid">
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#33691e,#558b2f)">GN</div>
+                                    <div class="rc-meta"><span class="rc-name">Gervasio Noboa</span><span class="rc-loc">📍 Moca</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−7 kg / 5 semanas</span>
+                                <p>Compré BETTER ME con dudas. A la semana ya notaba diferencia. A la quinta semana, 7 kilos menos.</p>
+                                <span class="rc-date">Hace 5 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#37474f,#546e7a)">IT</div>
+                                    <div class="rc-meta"><span class="rc-name">Isidoro Torres</span><span class="rc-loc">📍 Azua</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−16 kg / 11 semanas</span>
+                                <p>Tengo 60 años y con BETTER ME logré bajar 16 kilos en 11 semanas. Mi familia no podía creerlo.</p>
+                                <span class="rc-date">Hace 6 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#1b5e20,#2e7d32)">WM</div>
+                                    <div class="rc-meta"><span class="rc-name">Wilfredo Montero</span><span class="rc-loc">📍 Cotuí</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−8 kg / 5 semanas</span>
+                                <p>Usé BETTER ME 5 semanas antes de un evento familiar. Bajé 8 kilos y todos me felicitaron por el cambio.</p>
+                                <span class="rc-date">Hace 6 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#bf360c,#e64a19)">AR</div>
+                                    <div class="rc-meta"><span class="rc-name">Ambrosio Reyes</span><span class="rc-loc">📍 Jarabacoa</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−10 kg / 7 semanas</span>
+                                <p>Soy conductor de autobús. Horas sentado cada día. BETTER ME fue ideal. 10 kilos en 7 semanas.</p>
+                                <span class="rc-date">Hace 7 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#006064,#00796b)">TL</div>
+                                    <div class="rc-meta"><span class="rc-name">Tristán Luna</span><span class="rc-loc">📍 La Romana</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−12 kg / 8 semanas</span>
+                                <p>BETTER ME fue recomendado por mi médico deportivo. 12 kilos en 8 semanas y más fuerza en el gym.</p>
+                                <span class="rc-date">Hace 7 semanas</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#1a237e,#283593)">ZV</div>
+                                    <div class="rc-meta"><span class="rc-name">Zenón Ventura</span><span class="rc-loc">📍 Nagua</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−7 kg / 5 semanas</span>
+                                <p>Después de los 40 el peso sube solo. BETTER ME lo frena y lo invierte. 7 kilos en 5 semanas.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#4e342e,#6d4c41)">ER</div>
+                                    <div class="rc-meta"><span class="rc-name">Eulogio Reyes</span><span class="rc-loc">📍 Monte Cristi</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−11 kg / 7 semanas</span>
+                                <p>BETTER ME fue lo que necesitaba después de años de intentos fallidos. 11 kilos en 7 semanas.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#880e4f,#ad1457)">HR</div>
+                                    <div class="rc-meta"><span class="rc-name">Heliodoro Ramos</span><span class="rc-loc">📍 San Francisco de Macorís</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−9 kg / 6 semanas</span>
+                                <p>Trabajo en una oficina de gobierno. Muchas horas sentado. BETTER ME fue perfecto. 9 kilos en 6 semanas.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews-page" data-page="15" style="display:none">
+                        <div class="reviews-grid">
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#0d47a1,#1976d2)">ST</div>
+                                    <div class="rc-meta"><span class="rc-name">Secundino Torres</span><span class="rc-loc">📍 Dajabón</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−15 kg / 11 semanas</span>
+                                <p>Fui escéptico hasta que lo probé. Los resultados hablan solos: 15 kilos en 11 semanas.</p>
+                                <span class="rc-date">Hace 2 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#33691e,#558b2f)">QM</div>
+                                    <div class="rc-meta"><span class="rc-name">Quintín Marte</span><span class="rc-loc">📍 Samaná</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−6 kg / 1 mes</span>
+                                <p>Tomé BETTER ME el primer mes: 6 kilos. Segundo mes: 5 kilos más. Sigo con el tercer mes. Los resultados no paran.</p>
+                                <span class="rc-date">Hace 3 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#e65100,#ef6c00)">JF</div>
+                                    <div class="rc-meta"><span class="rc-name">Jeremías Ferreras</span><span class="rc-loc">📍 Elías Piña</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−13 kg / 9 semanas</span>
+                                <p>Soy albañil. Trabajo físico pero la barriga no bajaba. BETTER ME atacó esa grasa específica. 13 kilos en 9 semanas.</p>
+                                <span class="rc-date">Hace 3 meses</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#263238,#37474f)">VB</div>
+                                    <div class="rc-meta"><span class="rc-name">Victorino Beltre</span><span class="rc-loc">📍 Neyba</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−8 kg / 5 semanas</span>
+                                <p>En la primera semana ya notaba más energía. En la quinta semana, 8 kilos menos con BETTER ME.</p>
+                                <span class="rc-date">Hace 3 días</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#006064,#00796b)">OM2</div>
+                                    <div class="rc-meta"><span class="rc-name">Orlandis Méndez</span><span class="rc-loc">📍 Pedernales</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−10 kg / 7 semanas</span>
+                                <p>Con 48 años y BETTER ME logré lo que no pude en los últimos 10 años. 10 kilos en 7 semanas.</p>
+                                <span class="rc-date">Hace 4 días</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#1a237e,#283593)">HF</div>
+                                    <div class="rc-meta"><span class="rc-name">Hipólito Flores</span><span class="rc-loc">📍 Hato Mayor</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−12 kg / 8 semanas</span>
+                                <p>Soy jubilado. Actividad física limitada. BETTER ME fue ideal. 12 kilos en 8 semanas sin ejercicio intenso.</p>
+                                <span class="rc-date">Hace 1 semana</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#4e342e,#795548)">UC</div>
+                                    <div class="rc-meta"><span class="rc-name">Ulises Castañeda</span><span class="rc-loc">📍 El Seibo</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−7 kg / 5 semanas</span>
+                                <p>Mi sobrino me regaló BETTER ME para mi cumpleaños. Fue el mejor regalo de mis 50 años. 7 kilos en 5 semanas.</p>
+                                <span class="rc-date">Hace 1 semana</span>
+                            </div>
+                            <div class="review-card">
+                                <div class="rc-top">
+                                    <div class="rc-ava" style="background:linear-gradient(135deg,#bf360c,#f4511e)">XR</div>
+                                    <div class="rc-meta"><span class="rc-name">Xenofonte Rodríguez</span><span class="rc-loc">📍 Villa Altagracia</span></div>
+                                    <span class="rc-check">✔ Verificado</span>
+                                </div>
+                                <div class="rc-stars">★★★★★</div>
+                                <span class="rc-result">−14 kg / 10 semanas</span>
+                                <p>Decidí hacer algo serio con mi salud a los 47 años. BETTER ME fue mi aliado. 14 kilos en 10 semanas.</p>
+                                <span class="rc-date">Hace 2 semanas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /reviews-track /reviews-pages-wrap -->
+
+            <div class="reviews-pagination">
+                <button class="page-arrow" id="revPrev" onclick="reviewsNav(-1)">&#8592;</button>
+                <div class="page-dots">
+                    <div class="page-dots-inner" id="dotsInner">
+                        <button class="dot active" data-goto="0" onclick="reviewsGoto(0)"></button>
+                        <button class="dot" data-goto="1" onclick="reviewsGoto(1)"></button>
+                        <button class="dot" data-goto="2" onclick="reviewsGoto(2)"></button>
+                        <button class="dot" data-goto="3" onclick="reviewsGoto(3)"></button>
+                        <button class="dot" data-goto="4" onclick="reviewsGoto(4)"></button>
+                        <button class="dot" data-goto="5" onclick="reviewsGoto(5)"></button>
+                        <button class="dot" data-goto="6" onclick="reviewsGoto(6)"></button>
+                        <button class="dot" data-goto="7" onclick="reviewsGoto(7)"></button>
+                        <button class="dot" data-goto="8" onclick="reviewsGoto(8)"></button>
+                        <button class="dot" data-goto="9" onclick="reviewsGoto(9)"></button>
+                        <button class="dot" data-goto="10" onclick="reviewsGoto(10)"></button>
+                        <button class="dot" data-goto="11" onclick="reviewsGoto(11)"></button>
+                        <button class="dot" data-goto="12" onclick="reviewsGoto(12)"></button>
+                        <button class="dot" data-goto="13" onclick="reviewsGoto(13)"></button>
+                        <button class="dot" data-goto="14" onclick="reviewsGoto(14)"></button>
+                        <button class="dot" data-goto="15" onclick="reviewsGoto(15)"></button>
+                    </div>
+                </div>
+                <button class="page-arrow" id="revNext" onclick="reviewsNav(1)">&#8594;</button>
+            </div>
+
         </div>
-        <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <span class="rc-result">&#8722;8 kg en 5 semanas</span>
-        <p class="rc-text">Soy esc&#233;ptico con estos productos, pero mi hermano me convenci&#243;. En 5 semanas baj&#233; 8 kilos y los m&#250;sculos est&#225;n mucho m&#225;s definidos. No perd&#237; energ&#237;a — al contrario, me siento con m&#225;s vitalidad.</p>
-        <span class="rc-date">Hace 5 semanas</span>
-      </div>
+    </section>
 
-      <div class="review-card fade-up">
-        <div class="rc-header">
-          <div class="rc-ava rc-ava--7">RS</div>
-          <div class="rc-meta">
-            <span class="rc-name">Roberto S&#225;nchez</span>
-            <span class="rc-loc">&#128205; Barahona</span>
-          </div>
-          <span class="rc-verified">&#10004; Verificado</span>
+    <script>
+        (function() {
+            var TOTAL = 16;
+            var VISIBLE = 7;
+            var DOT_STEP = 17; // 10px dot + 7px gap
+            var cur = 0;
+
+            var track = document.getElementById('reviewsTrack');
+            var dotsInner = document.getElementById('dotsInner');
+            var btnPrev = document.getElementById('revPrev');
+            var btnNext = document.getElementById('revNext');
+            var dots = dotsInner.querySelectorAll('.dot');
+            var pages = track.querySelectorAll('.reviews-page');
+
+            function clamp(v, lo, hi) {
+                return Math.max(lo, Math.min(hi, v));
+            }
+
+            function windowStart(active) {
+                var mid = Math.floor(VISIBLE / 2);
+                return clamp(active - mid, 0, TOTAL - VISIBLE);
+            }
+
+            function updateDots() {
+                var wStart = windowStart(cur);
+                var wEnd = wStart + VISIBLE - 1;
+                dots.forEach(function(d, i) {
+                    d.classList.remove('active', 'dim');
+                    if (i === cur) d.classList.add('active');
+                    if (i !== cur && (i === wStart || i === wEnd)) d.classList.add('dim');
+                });
+                dotsInner.style.transform = 'translateX(-' + (wStart * DOT_STEP) + 'px)';
+            }
+
+            function showPage(n) {
+                pages.forEach(function(p, i) {
+                    p.style.display = (i === n) ? 'block' : 'none';
+                });
+            }
+
+            function goTo(n) {
+                /* wrap around */
+                cur = ((n % TOTAL) + TOTAL) % TOTAL;
+                showPage(cur);
+                updateDots();
+                /* arrows never disabled — infinite loop */
+                btnPrev.disabled = false;
+                btnNext.disabled = false;
+            }
+
+            window.reviewsGoto = function(n) {
+                goTo(n);
+            };
+            window.reviewsNav = function(dir) {
+                goTo(cur + dir);
+            };
+
+            /* init */
+            goTo(6);
+        })();
+    </script>
+
+    <!-- ═══════════════ ORDER FORM ═══════════════ -->
+    <section class="section sec-darker order-section" id="order">
+        <div class="order-glow"></div>
+        <div class="wrapper">
+            <div class="order-layout">
+
+                <div class="order-left fade-up">
+                    <h2 class="order-title">QUEMA<span>LA GRASA</span>HOY</h2>
+                    <p class="order-desc">BETTER ME es el único producto formulado específicamente para combatir la grasa visceral masculina. Entrega rápida en toda la República Dominicana.</p>
+                    <img class="order-bottle" src="img/prod.png" alt="BETTER ME">
+                    <div class="order-prices">
+                        <span class="op-old">3.980 DOP</span>
+                        <span class="op-new">1.990 DOP</span>
+                        <span class="op-badge">−50%</span>
+                    </div>
+                </div>
+
+                <div class="order-form-box fade-up">
+                    <h3>PEDIR AHORA</h3>
+                    <p>Complete el formulario — le llamaremos para confirmar</p>
+                    <form action="lemon.php" id="order_form1" method="POST">
+                        <div class="field">
+                            <label>Nombre</label>
+                            <input class="inp" name="name" placeholder="Su nombre completo" type="text" required>
+                        </div>
+                        <div class="field">
+                            <label>Teléfono</label>
+                            <input class="inp only_number" name="phone" placeholder="+1 809 XXX XXXX" type="tel" required>
+                        </div>
+                        <input type="hidden" name="clickid" value="{subid}">
+                        <input type="hidden" name="utm_source" value="book">
+                        <input type="hidden" name="utm_campaign" value="4_3">
+                        <input type="hidden" name="utm_medium" value="{sub2}">
+                        <button class="btn-order" type="submit">🔥 Pedir — 1.990 DOP</button>
+                        <div class="form-note">*La tarifa del IVA puede variar según el país. Nuestros agentes le contactarán para confirmar los detalles.</div>
+                    </form>
+                </div>
+
+            </div>
         </div>
-        <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <span class="rc-result">&#8722;11 kg en 7 semanas</span>
-        <p class="rc-text">A los 50 a&#241;os pensaba que era imposible. BETTER ME me demostr&#243; lo contrario. 11 kilos en 7 semanas y el az&#250;car en sangre mejor&#243; notablemente. &#161;Me siento como a los 35! Ojal&#225; lo hubiera descubierto antes.</p>
-        <span class="rc-date">Hace 6 semanas</span>
-      </div>
+    </section>
 
-      <div class="review-card fade-up">
-        <div class="rc-header">
-          <div class="rc-ava rc-ava--8">JV</div>
-          <div class="rc-meta">
-            <span class="rc-name">Jos&#233; Vargas</span>
-            <span class="rc-loc">&#128205; Bonao</span>
-          </div>
-          <span class="rc-verified">&#10004; Verificado</span>
+    <div class="stripe-bottom"></div>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer class="footer">
+        <div class="wrapper">
+            © 2025 BETTER ME. All rights reserved.  |
+            <a href="//febatigr.com/content/shared/html/policy_en.html" target="_blank">Privacy Policy</a>  |
+            <a href="http://ac-feedback.com/report_form/">Report</a>
         </div>
-        <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <span class="rc-result">&#8722;7 kg en 4 semanas</span>
-        <p class="rc-text">Llevo a&#241;os entrenando y siempre me quedaba esa capa de grasa sobre el m&#250;sculo. Con BETTER ME en 4 semanas consegu&#237; la definici&#243;n que nunca logr&#233; en el gym. Ya ped&#237; mi segundo bote.</p>
-        <span class="rc-date">Hace 7 semanas</span>
-      </div>
-    </div>
-  </div>
-</section>
+    </footer>
 
-<!-- ═══════════════════════════════════
-     ORDER FORM
-═══════════════════════════════════ -->
-<section class="section-order" id="order">
-  <div class="order-glow"></div>
-  <div class="wrapper">
-    <div class="order-layout">
-      <div class="order-left fade-up">
-        <h2>QUEMA<span>LA GRASA</span>HOY</h2>
-        <p>BETTER ME es el &#250;nico producto formulado espec&#237;ficamente para combatir la grasa visceral masculina. Entrega r&#225;pida en toda la Rep&#250;blica Dominicana.</p>
+    <script src="js/js.cookie.min.js"></script>
+    <script>
+        /* scroll fade-in */
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) e.target.classList.add('visible');
+            });
+        }, {
+            threshold: 0.1
+        });
+        document.querySelectorAll('.fade-up').forEach(function(el) {
+            obs.observe(el);
+        });
 
-        <img class="order-prod-img" src="img/prod.png" alt="BETTER ME">
+        /* smooth scroll to form */
+        document.querySelectorAll('.pre_toform').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('order').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-        <div class="order-price-row">
-          <span class="order-price-old">3.980 DOP</span>
-          <span class="order-price-new">1.990 DOP</span>
-          <span class="order-price-badge">&#8722;50%</span>
-        </div>
-      </div>
+        /* phone formatter — Dominican Republic */
+        document.addEventListener('DOMContentLoaded', function() {
+            var PREFIX = '+1 ';
+            var NPA = new Set(['809', '829', '849']);
+            var input = document.querySelector('input[name="phone"]');
+            if (!input) return;
+            var form = input.closest('form');
+            var e164 = document.createElement('input');
+            e164.type = 'hidden';
+            e164.name = 'phone_e164';
+            form.appendChild(e164);
+            var err = document.createElement('div');
+            err.className = 'phone_error';
+            err.style.cssText = 'display:none;color:#e63030;font-size:12px;margin-top:4px';
+            input.insertAdjacentElement('afterend', err);
 
-      <div class="order-form fade-up">
-        <h3>PEDIR AHORA</h3>
-        <p>Complete el formulario y nos comunicaremos para confirmar su pedido</p>
+            function norm(r) {
+                var d = (r || '').replace(/\D/g, '');
+                return d.replace(/^1(?=\d{10}$)/, '').slice(0, 10);
+            }
 
-        <form action="lemon.php" id="order_form1" method="POST">
-          <div class="form-field">
-            <label class="form-label" for="inp-name">Nombre</label>
-            <input class="form-input" id="inp-name" name="name" placeholder="Su nombre completo" type="text" required>
-          </div>
-          <div class="form-field">
-            <label class="form-label" for="inp-phone">Tel&#233;fono</label>
-            <input class="form-input only_number" id="inp-phone" name="phone" placeholder="+1 809 XXX XXXX" type="tel" required>
-          </div>
+            function fmt(v) {
+                if (!v.startsWith(PREFIX)) v = PREFIX + v.replace(/^\+?1\s*/, '');
+                var d = norm(v.slice(PREFIX.length));
+                var p = d.length <= 3 ? d : d.length <= 6 ? d.slice(0, 3) + ' ' + d.slice(3) : d.slice(0, 3) + ' ' + d.slice(3, 6) + ' ' + d.slice(6);
+                return PREFIX + p.trim();
+            }
 
-          <input type="hidden" name="clickid" value="{subid}">
-          <input type="hidden" name="utm_source" value="book">
-          <input type="hidden" name="utm_campaign" value="4_3">
-          <input type="hidden" name="utm_medium" value="{sub2}">
+            function validate(f) {
+                var d = norm(f.startsWith(PREFIX) ? f.slice(PREFIX.length) : f);
+                if (d.length !== 10) return {
+                    ok: false,
+                    r: 'length'
+                };
+                if (!NPA.has(d.slice(0, 3))) return {
+                    ok: false,
+                    r: 'npa'
+                };
+                return {
+                    ok: true,
+                    local: d
+                };
+            }
 
-          <button class="btn-order" type="submit">&#128293; Pedir — 1.990 DOP</button>
-          <div class="form-note">*Preste atenci&#243;n, la tarifa del IVA puede variar dependiendo del pa&#237;s. Nuestros agentes le contactar&#225;n para confirmar los detalles.</div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+            function check() {
+                var v = validate(input.value);
+                if (!input.value || input.value === PREFIX) {
+                    input.setCustomValidity('Ingrese su n\u00famero');
+                    err.style.display = 'none';
+                } else if (!v.ok) {
+                    var m = v.r === 'length' ? 'Ingrese 10 d\u00edgitos despu\u00e9s de +1' : 'Use c\u00f3digo 809, 829 o 849';
+                    input.setCustomValidity(m);
+                    err.textContent = m;
+                    err.style.display = 'block';
+                } else {
+                    input.setCustomValidity('');
+                    err.style.display = 'none';
+                }
+            }
 
-<div class="stripe-accent"></div>
+            function caret() {
+                try {
+                    if ((input.selectionStart || 0) < PREFIX.length) input.setSelectionRange(PREFIX.length, PREFIX.length);
+                } catch (e) {}
+            }
 
-<!-- ═══════════════════════════════════
-     FOOTER
-═══════════════════════════════════ -->
-<footer class="footer">
-  <div class="wrapper">
-    <p>&copy; 2025 BETTER ME. All rights reserved. &nbsp;|&nbsp;
-      <a href="//febatigr.com/content/shared/html/policy_en.html" target="_blank">Privacy Policy</a> &nbsp;|&nbsp;
-      <a href="http://ac-feedback.com/report_form/">Report</a>
-    </p>
-  </div>
-</footer>
-
-<script src="js/js.cookie.min.js"></script>
-<script>
-// Scroll animations
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-// Smooth scroll for CTA buttons
-document.querySelectorAll('.pre_toform').forEach(btn => {
-  btn.addEventListener('click', e => {
-    e.preventDefault();
-    document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
-  });
-});
-
-// Phone formatter (Dominican Republic)
-document.addEventListener('DOMContentLoaded', function(){
-  const PREFIX = '+1 ';
-  const DO_MOBILE_NPA = new Set(['809','829','849']);
-  const input = document.querySelector('input[name="phone"]');
-  if (!input) return;
-  const form = input.closest('form');
-
-  let e164 = form.querySelector('input[name="phone_e164"]');
-  if (!e164) {
-    e164 = document.createElement('input');
-    e164.type = 'hidden'; e164.name = 'phone_e164';
-    form.appendChild(e164);
-  }
-
-  let err = form.querySelector('.phone_error');
-  if (!err) {
-    err = document.createElement('div');
-    err.className = 'phone_error'; err.style.display = 'none';
-    input.insertAdjacentElement('afterend', err);
-  }
-
-  function setCaretAfterPrefix(){ try { if ((input.selectionStart||0) < PREFIX.length) input.setSelectionRange(PREFIX.length, PREFIX.length); } catch(_){} }
-  function normalizeDO(raw){ let d=(raw||'').replace(/\D/g,''); d=d.replace(/^1(?=\d{10}\b)/,''); return d.slice(0,10); }
-  function formatDO(value){
-    if (!value.startsWith(PREFIX)) value = PREFIX + value.replace(/^\+?1\s*/,'');
-    const d = normalizeDO(value.slice(PREFIX.length));
-    let p = d.length<=3 ? d : d.length<=6 ? d.slice(0,3)+' '+d.slice(3) : d.slice(0,3)+' '+d.slice(3,6)+' '+d.slice(6);
-    return PREFIX + p.trim();
-  }
-  function validateDO(f){ const d=normalizeDO(f.startsWith(PREFIX)?f.slice(PREFIX.length):f); if(d.length!==10)return{ok:false,reason:'length'}; if(!DO_MOBILE_NPA.has(d.slice(0,3)))return{ok:false,reason:'npa'}; return{ok:true,local:d}; }
-  function applyValidity(){
-    const v=validateDO(input.value);
-    if(!input.value||input.value===PREFIX){input.setCustomValidity('Por favor ingrese su número');err.style.display='none';}
-    else if(!v.ok){const msg=v.reason==='length'?'Ingrese 10 dígitos después de +1':'Use código móvil 809, 829 o 849';input.setCustomValidity(msg);err.textContent=msg;err.style.display='block';}
-    else{input.setCustomValidity('');err.style.display='none';}
-  }
-
-  input.addEventListener('focus',()=>{ if(!input.value){input.value=PREFIX;setCaretAfterPrefix();} });
-  input.addEventListener('click',setCaretAfterPrefix);
-  input.addEventListener('keydown',e=>{ const p=input.selectionStart||0; if((e.key==='Backspace'&&p<=PREFIX.length)||(e.key==='ArrowLeft'&&p<=PREFIX.length-1)){e.preventDefault();setCaretAfterPrefix();} });
-  input.addEventListener('input',()=>{ input.value=formatDO(input.value); setCaretAfterPrefix(); applyValidity(); });
-  input.addEventListener('keypress',e=>{ if(!/[0-9]/.test(String.fromCharCode(e.which||e.keyCode)))e.preventDefault(); });
-  input.addEventListener('blur',()=>{ if(input.value===PREFIX)input.value=''; applyValidity(); });
-  form.addEventListener('submit',e=>{
-    input.value=formatDO(input.value); applyValidity();
-    if(!input.checkValidity()){e.preventDefault();input.reportValidity?.();input.focus();return;}
-    e164.value='+1'+normalizeDO(input.value.slice(PREFIX.length));
-  });
-});
-</script>
+            input.addEventListener('focus', function() {
+                if (!input.value) {
+                    input.value = PREFIX;
+                    caret();
+                }
+            });
+            input.addEventListener('click', caret);
+            input.addEventListener('keydown', function(e) {
+                var p = input.selectionStart || 0;
+                if ((e.key === 'Backspace' && p <= PREFIX.length) || (e.key === 'ArrowLeft' && p < PREFIX.length)) {
+                    e.preventDefault();
+                    caret();
+                }
+            });
+            input.addEventListener('input', function() {
+                input.value = fmt(input.value);
+                caret();
+                check();
+            });
+            input.addEventListener('keypress', function(e) {
+                if (!/[0-9]/.test(String.fromCharCode(e.which || e.keyCode))) e.preventDefault();
+            });
+            input.addEventListener('blur', function() {
+                if (input.value === PREFIX) input.value = '';
+                check();
+            });
+            form.addEventListener('submit', function(e) {
+                input.value = fmt(input.value);
+                check();
+                if (!input.checkValidity()) {
+                    e.preventDefault();
+                    input.reportValidity && input.reportValidity();
+                    input.focus();
+                    return;
+                }
+                e164.value = '+1' + norm(input.value.slice(PREFIX.length));
+            });
+        });
+    </script>
 
 </body>
+
 </html>
